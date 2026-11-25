@@ -1,0 +1,20 @@
+{
+  "title": "TODO title",
+  "logline": "TODO one-sentence logline (pick the story, then write it in DESIGN.md)",
+  "feel": "TODO what the audience should feel at the end",
+  "style_block": "flat illustrated storybook style, warm earth tones, soft paper texture, gentle light",
+  "character": "TODO one fixed character description (age, clothing, hair, distinguishing detail)",
+  "seed": 42,
+  "shots": [
+    {"id": "s01", "reason": "Establish the place", "duration": 8, "keyframe_prompt": "TODO wide view of the place at dawn", "motion": {"engine": "kenburns", "kind": "zoom_in"}, "narration": "TODO narration line 1."},
+    {"id": "s02", "reason": "Introduce the character", "duration": 8, "keyframe_prompt": "TODO the character, medium shot", "motion": {"engine": "kenburns", "kind": "pan_right"}, "narration": "TODO narration line 2."},
+    {"id": "s03", "reason": "TODO", "duration": 8, "keyframe_prompt": "TODO shot three prompt", "narration": "TODO."},
+    {"id": "s04", "reason": "TODO", "duration": 8, "keyframe_prompt": "TODO shot four prompt", "narration": "TODO."},
+    {"id": "s05", "reason": "TODO", "duration": 8, "keyframe_prompt": "TODO shot five prompt", "narration": "TODO."},
+    {"id": "s06", "reason": "TODO", "duration": 8, "keyframe_prompt": "TODO shot six prompt", "narration": "TODO."},
+    {"id": "s07", "reason": "TODO", "duration": 8, "keyframe_prompt": "TODO shot seven prompt", "narration": "TODO."},
+    {"id": "s08", "reason": "Emotional landing", "duration": 8, "keyframe_prompt": "TODO final image", "motion": {"engine": "kenburns", "kind": "zoom_out"}, "narration": "TODO closing line."}
+  ],
+  "music": {"prompt": "TODO gentle acoustic instrumental, warm, slow tempo, no vocals", "duration": 70},
+  "end_card": {"text": "Made with AI", "duration": 4}
+}
