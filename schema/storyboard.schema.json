@@ -2,14 +2,19 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Heritage Short storyboard",
   "type": "object",
-  "required": ["title", "logline", "style_block", "character", "shots", "music", "end_card"],
+  "required": ["title", "logline", "style_block", "characters", "setting", "shots", "music", "end_card"],
   "additionalProperties": false,
   "properties": {
     "title": {"type": "string", "minLength": 1},
     "logline": {"type": "string", "minLength": 1},
     "feel": {"type": "string", "description": "What the audience should feel at the end"},
     "style_block": {"type": "string", "minLength": 10, "description": "Prepended to every keyframe prompt"},
-    "character": {"type": "string", "minLength": 10, "description": "Fixed character description, prepended to every prompt"},
+    "characters": {
+      "type": "object", "minProperties": 1,
+      "additionalProperties": {"type": "string", "minLength": 10},
+      "description": "Fixed description per character; a shot's cast picks which are added to its prompt"
+    },
+    "setting": {"type": "string", "minLength": 10, "description": "The one place, added to every keyframe prompt"},
     "seed": {"type": "integer", "default": 42},
     "narration_lang": {"type": "string", "default": "am", "description": "Language of spoken narration"},
     "shots": {
@@ -23,6 +28,7 @@
           "reason": {"type": "string", "minLength": 5, "description": "Why this shot exists"},
           "duration": {"type": "number", "minimum": 3, "maximum": 15},
           "keyframe_prompt": {"type": "string", "minLength": 10},
+          "cast": {"type": "array", "items": {"type": "string"}, "description": "Keys of characters that appear in this shot"},
           "motion": {
             "type": "object",
             "additionalProperties": false,
