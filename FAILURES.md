@@ -12,3 +12,10 @@ Format: what broke -> what I tried -> what fixed it (or didn't).
 - **Diagnosis:** the first two samples decode as ASCII "RIFF". Gemini TTS returned a full WAV file, but my stage wrapped those bytes as raw 24 kHz PCM. So the 44-byte header played as a click and a ~7.7 KB trailing metadata chunk (ASCII text) played as noise, about 0.16 s.
 - **Fix:** `narration.decode_audio` parses the RIFF chunks and keeps only the `data` payload (falls back to raw PCM if there is no RIFF header). The cached files hold the original response bytes, so I repaired them without new API calls. After the fix the tail RMS is below 15.
 - **Lesson:** I assumed the API returned bare PCM without checking. The same flaw was in the E1 test clip, which I judged "perfect" by ear, so a short flaw can slip past a quick listen. Verify the format of what a model returns, and check the audio numerically.
+
+## F3: the mother was inconsistent and her face appeared in the hands-only shot
+- **What broke:** in the first keyframe set the mother wore a different outfit in s05 (striped headscarf, dark green skirt) than in s04 and s08 (white dress), and s04, meant to show only her hands, showed her face and a paper border no other shot had.
+- **What I tried:** compared all 8 shots side by side in a contact sheet instead of one by one. Then made her outfit explicit and fixed ("always the same white outfit"), and rewrote s04 as "cropped at the wrist and forearm... no face, no head, no border".
+- **Fix:** only s04, s05 and s08 regenerated (cache). Outfit now matches; s04 shows hands only (a sliver of chin remains at the top edge).
+- **Lesson:** a vague description ("white shawl, headscarf") gives the model room to vary it; negative instructions in a prompt work only partly, so concrete visual detail helps more.
+- **Still imperfect:** the girl looks slightly younger in s05 and s08 than in s02/s03, and s01 has an oversized injera lying on the floor.

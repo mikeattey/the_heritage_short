@@ -7,4 +7,19 @@ Format: **E#: hypothesis** -> change -> result (numbers from runs.jsonl where po
 - **Result:** HTTP 200 in 3.6 s, 2.95 s of 24 kHz audio. I (a native listener) judged the pronunciation "perfect". Decision: narrate in Amharic, burn in English subtitles. See the E1 line in runs.jsonl.
 - **Caveat:** one short sentence only; longer lines and the second (mother) voice are untested until the narration stage runs on the full storyboard.
 
-## E2: TODO
+## E2: a reference image keeps the girl consistent better than text alone (FLUX.2 klein 4B)
+- **Hypothesis:** passing the approved character sheet as `input_image_0` gives a more consistent girl than repeating the text description.
+- **Change:** same shot (girl on a stool, burnt injera) generated twice on `@cf/black-forest-labs/flux-2-klein-4b`: once with the sheet as reference (9.2 s), once text-only (16.9 s). Images in outputs/experiments/.
+- **Result:** the reference matched the sheet's face but drifted in style (lost paper texture, shawl turned into a white top, Western kitchen with sink and cabinets). Text-only kept the style, shawl and mood. One pair is weak evidence, so I used text-only as the default and left reference mode behind the `KEYFRAME_REF` env var. Not yet tested across all shots.
+
+## E3: separating characters from setting and a per-shot cast list improves keyframes
+- **Hypothesis:** one combined `character` string put the mother into girl-only shots and gave a Western-looking kitchen; separate `characters`, `setting` and per-shot `cast` fixes that, and a precise setting fixes "injera looks like a tortilla".
+- **Change:** schema now has `characters`, `setting` and shot `cast`; setting says mud walls, clay griddle, no cabinets or sink, and describes injera (large, spongy, grey-beige, bubble eyes).
+- **Result:** all 8 keyframes in about 95 s (10-16 s each). Setting consistent across all 8, injera reads as injera, girl recognisable in 6 of 6 shots she appears in. Mother was inconsistent (see F3), fixed in E4.
+
+## E4: caching regenerates only the shots whose prompt changed
+- **Hypothesis:** editing the mother's description should regenerate only the 3 shots with her in the cast.
+- **Change:** tightened the `mother` text and the s04 prompt, re-ran `make keyframes`.
+- **Result:** s01, s02, s03, s06, s07 cached; s04, s05, s08 regenerated (12-13 s each, 3 new lines in runs.jsonl). Mother now wears the same white embroidered dress and headscarf in all three, and s04 no longer shows a face.
+
+## E5: TODO
