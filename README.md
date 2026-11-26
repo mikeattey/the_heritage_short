@@ -4,7 +4,9 @@
 
 It is made for young Ethiopians who are impatient with learning. This repo is the pipeline that makes it, so you can regenerate the whole film from one file, [storyboard.json](storyboard.json).
 
-- Film (9:16 and 16:9), walkthrough and public post: _links to be added at submission_
+- **Film, vertical 9:16 (main):** https://drive.google.com/file/d/1CASDdT_FSDUUt68cJ-5-_LMv-yN9P15m/view?usp=sharing
+- **Film, widescreen 16:9:** https://drive.google.com/file/d/1WaKvpfehkFj9Wpj2h1SKCZ-nH4c31O_P/view?usp=sharing
+- Walkthrough video and public post: _links to be added_
 - Made with AI. Every model, its licence and its cost are documented below.
 
 ## Quick start
