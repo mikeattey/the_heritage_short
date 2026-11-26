@@ -1,6 +1,6 @@
 # The Heritage Short
 
-**Qes Beqes (Slowly, Slowly)** is a 68-second illustrated short film made with AI. A girl in an Ethiopian kitchen keeps tearing her injera, and her mother answers with a proverb: *slowly, slowly, the egg learned to walk.* The narration is in Amharic with burned-in English subtitles, over an original AI-generated score. The scene is imagined, and every image, voice and note is synthetic.
+**Qes Beqes (Slowly, Slowly)** is a 61-second illustrated short film made with AI. A girl in an Ethiopian kitchen keeps tearing her injera, and her mother answers with a proverb: *slowly, slowly, the egg learned to walk.* The narration is in Amharic with burned-in English subtitles, over an original AI-generated score. The scene is imagined, and every image, voice and note is synthetic.
 
 It is made for young Ethiopians who are impatient with learning. This repo is the pipeline that makes it, so you can regenerate the whole film from one file, [storyboard.json](storyboard.json).
 
