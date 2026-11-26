@@ -40,4 +40,15 @@ Changing one shot's narration regenerates 1 narration clip and its subtitle, not
 
 ## Frontier-model comparison
 
-TODO: one Amharic proofread (the same narration lines through Claude and through Gemini) with a note on cost and quality. Planned as experiment E10 if time allows.
+E9 sent the same Amharic proofreading task to Gemini 3.5 Flash (API, free tier) and Claude Sonnet 5.5 (in-session). Results are in EXPERIMENTS.md.
+
+| | Gemini 3.5 Flash | Claude Sonnet 5.5 |
+|---|---|---|
+| Latency | 27.3 s for 9 lines (about 40 s of failed attempts before it on other models) | not measured (in-session) |
+| Tokens | 555 in, 527 out, 1,161 thinking | not logged |
+| Paid cost | $0 (free tier) | not charged separately |
+| Flags raised | 1 | 1 firm, 1 minor, 1 note |
+| Found the real error (s03 typo) | yes | yes |
+| Quality rating by a native speaker | pending | pending |
+
+Take-away so far: for this small task the free model matched the frontier model on the one real error, and the extra flags are the only difference. The availability problem mattered more than quality: the default Gemini model returned 503 for several minutes, so a fallback model ID is worth having in `.env`.

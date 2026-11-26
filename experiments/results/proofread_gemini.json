@@ -1,0 +1,65 @@
+[
+  {
+    "id": "s01",
+    "verdict": "ok",
+    "issue": "",
+    "suggestion": "",
+    "reason": "The sentence is natural, correct modern Amharic."
+  },
+  {
+    "id": "s02",
+    "verdict": "ok",
+    "issue": "",
+    "suggestion": "",
+    "reason": "The sentence is grammatically correct and natural."
+  },
+  {
+    "id": "s03",
+    "verdict": "flag",
+    "issue": "ቅርጣ",
+    "suggestion": "ሦስተኛው ተቃጠለ። ልጅቷ ተስፋ ቆርጣ ለመተው ፈለገች።",
+    "reason": "\"ቅርጣ\" is a misspelling of \"ቆርጣ\" in the Amharic idiom for losing hope (\"ተስፋ ቆርጣ\")."
+  },
+  {
+    "id": "s04",
+    "verdict": "ok",
+    "issue": "",
+    "suggestion": "",
+    "reason": "The sentence is natural and grammatically correct."
+  },
+  {
+    "id": "s05",
+    "verdict": "ok",
+    "issue": "",
+    "suggestion": "",
+    "reason": "This is the exact traditional Amharic proverb."
+  },
+  {
+    "id": "s09",
+    "verdict": "ok",
+    "issue": "",
+    "suggestion": "",
+    "reason": "Correct attribution verb in spoken narration."
+  },
+  {
+    "id": "s06",
+    "verdict": "ok",
+    "issue": "",
+    "suggestion": "",
+    "reason": "The sentence is fluent and grammatically correct."
+  },
+  {
+    "id": "s07",
+    "verdict": "ok",
+    "issue": "",
+    "suggestion": "",
+    "reason": "The sentence is natural and well-structured."
+  },
+  {
+    "id": "s08",
+    "verdict": "ok",
+    "issue": "",
+    "suggestion": "",
+    "reason": "The sentence is natural and effectively references the earlier proverb."
+  }
+]

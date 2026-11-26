@@ -42,3 +42,8 @@ Format: what broke -> what I tried -> what fixed it (or didn't).
 - **What happened:** generating the s09 keyframe, the first request got `400 Bad Request` from Workers AI. The retry 1 s later with the identical prompt succeeded (18 s total).
 - **Handling:** `common.retry` caught it, and the failed attempt is in `runs.jsonl` as the first real `success: false` line (error `HTTPError 400`). I did not change the prompt.
 - **Open question:** a 400 normally means a bad request, so a retry should not help. Possible causes are a transient fault at the provider or an intermittent input filter; I cannot tell which from the response I log. Lesson: retrying all errors is crude, but it saved this run.
+
+## F8: Gemini text API unavailable (503 and read timeouts) during E9
+- **What happened:** `gemini-3.8-flash` (the pipeline's default text model) returned HTTP 503 on 10 consecutive attempts across two runs; `gemini-3.7-flash` returned 503 and one 180 s read timeout. A probe of five models showed 3.8 and 3.7 timing out at 25 s, 3.6 returning 503, and 3.5 and 3.1-flash-lite responding (3.5 took 16 s for a one-word prompt).
+- **Handling:** `common.retry` logged every failed attempt (`success: false`, `HTTPError 503`, `ReadTimeout`) and gave up after 5 tries, as designed. I switched the experiment to `gemini-3.5-flash` through the `GEMINI_TEXT_MODEL` env variable, with no code change, and recorded the substitution in E9.
+- **Lesson:** model IDs belong in `.env` (they did), and a slow or overloaded newest model is a risk for a deadline. The narration stage uses a TTS model, which stayed available.
