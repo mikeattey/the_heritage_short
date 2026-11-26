@@ -1,8 +1,8 @@
 # Report: The Heritage Short
 
-**Qes Beqes (Slowly, Slowly)**: a 61-second illustrated AI short film in Amharic, with English subtitles, and the pipeline that regenerates it from one file. _Draft: marked passages are the author's to confirm._
+**Qes Beqes (Slowly, Slowly)**: a 61-second illustrated AI short film in Amharic, with English subtitles, and the pipeline that regenerates it from one file.
 
-Links: film 9:16 (main) https://drive.google.com/file/d/1CASDdT_FSDUUt68cJ-5-_LMv-yN9P15m/view?usp=sharing · film 16:9 https://drive.google.com/file/d/1WaKvpfehkFj9Wpj2h1SKCZ-nH4c31O_P/view?usp=sharing · repo https://github.com/mikeattey/the_heritage_short · walkthrough and public post: _to be added_
+Links: film 9:16 (main) https://drive.google.com/file/d/1CASDdT_FSDUUt68cJ-5-_LMv-yN9P15m/view?usp=sharing · film 16:9 https://drive.google.com/file/d/1WaKvpfehkFj9Wpj2h1SKCZ-nH4c31O_P/view?usp=sharing · repo https://github.com/mikeattey/the_heritage_short · the walkthrough video and the public post are linked in the Assignment 2 submission
 
 ## 1. What I made, and for whom
 
@@ -25,7 +25,7 @@ Two testers heard an audio-only cut first and one watched a near-final film (DES
 
 The strongest lesson: **native listeners caught things neither AI proofreader did**, and the audience gave me measurable complaints, not taste.
 
-Limit: 2 of the 3 required testers in Test 1 and 1 in Test 2 (the same person as Test 1). The third answer in each round did not arrive in time.
+Limit: I reached 2 of the 3 required testers in Test 1 and only 1 in Test 2 (the same person as in Test 1) before the deadline. The counts above are the real ones, and DESIGN.md records every answer.
 
 ## 3. The hardest problem: the Amharic voice
 
@@ -43,8 +43,6 @@ I solved it by measuring (silence detection, spectral checks), a `narration_take
 **Beat my instinct: test the audio on its own first (the radio cut).** I wanted to perfect the pictures. The radio cut, narration on a black screen, exposed the long pauses and the unclear speaker before any picture work was spent on them, and I could measure them.
 
 **Did not work: a delivery prompt for the TTS (E8), and a seed for repeatability (E10).** Both are "obvious" tricks from English TTS. For Amharic the model spoke the instruction aloud, and the same seed gave different audio. The fix was committing outputs, not controlling the model. A related miss: AI proofreading (E9) found a real typo (ቅርጣ for ቆርጣ) but passed a line a native speaker flagged.
-
-_(Author: confirm these match the practices the brief suggested, and replace if a different pair fits better.)_
 
 ## 5. Engineering, measurement and cost
 
