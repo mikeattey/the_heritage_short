@@ -79,3 +79,6 @@ Not handled, on purpose: partial-failure alerts and cost caps. The tool is run b
 - **Square keyframes, cropped per aspect ratio.** One image call serves both exports. The price is that 16:9 loses about 44% of the height and can cut a character's head.
 - **Characters by text, not by reference image.** Simpler and cacheable, but consistency across shots is imperfect (E2, E3, F3).
 - **Files on disk, not a queue or database.** Easy to inspect and cache, and a stranger can read the whole pipeline in an hour. It does not scale beyond one machine, and it doesn't need to.
+
+## Clean-clone check (2026-11-26)
+`git clone` into an empty folder, copy `.env`, `make setup`, `make smoke`, `make film`: the keyframes and narration stages printed `cached` for every shot (their files are committed under `outputs/`), the shots and the assembly rendered locally, and the result was the same film as on the author's machine (61 s, both aspect ratios). No model call was made. Changing one image prompt and re-running regenerated only that shot. What a stranger still needs: `.env` with keys (the stages read them even when everything is cached), FFmpeg, Python 3.10+, and, for subtitles, macOS fonts (see README, known limits).
