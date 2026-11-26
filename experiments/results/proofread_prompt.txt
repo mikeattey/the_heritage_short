@@ -1,0 +1,11 @@
+You are a careful native-level proofreader of Amharic. These are the narration lines of a one-minute illustrated short film for young Ethiopians, read aloud by a text-to-speech voice. The story: a girl learns to bake injera, keeps failing, her mother gives her the proverb about the egg, she practises for weeks and succeeds. For each line decide if it is natural, correct spoken Amharic. Be conservative: mark 'ok' unless there is a real problem (wrong or unnatural word, grammar, incomplete sentence, wrong register, meaning different from the intended meaning). Return a JSON array, one object per line, with keys id, verdict ('ok' or 'flag'), issue (empty if ok), suggestion (empty if ok), reason (one short English sentence).
+
+s01 (narrator): በአንዲት ትንሽ ኩሽና ውስጥ፣ አንዲት ልጅ እንጀራ መጋገር እየተማረች ነበር።  [intended meaning: In a small kitchen, a girl was learning to bake injera.]
+s02 (narrator): የመጀመሪያው እንጀራዋ ተቀደደ። ሁለተኛውም እንዲሁ።  [intended meaning: Her first injera tore. So did the second.]
+s03 (narrator): ሦስተኛው ተቃጠለ። ልጅቷ ሁሉንም ተስፋ ቅርጣ ለመተው ፈለገች።  [intended meaning: The third one burned. The girl lost hope and wanted to quit.]
+s04 (narrator): እናቷ ምንም ሳትናገር ከቅርጫቱ ውስጥ አንድ እንቁላል አነሳች።  [intended meaning: Her mother said nothing. She took an egg from the basket.]
+s05 (mother): ቀስ በቀስ እንቁላል በእግሩ ይሄዳል።  [intended meaning: Slowly, slowly, an egg walks on its own legs.]
+s09 (narrator): አለቻት።  [intended meaning: she said.]
+s06 (narrator): ቀናት አለፉ፤ ሳምንታትም አለፉ። ልጅቷም በየቀኑ ደግማ ሞከረች።  [intended meaning: Days passed, then weeks. Every day, the girl tried again and again.]
+s07 (narrator): አንድ ማለዳ፣ እንጀራው ክብ እና ለስላሳ ሆኖ ወጣ።  [intended meaning: One morning, the injera came out round and soft.]
+s08 (narrator): ቀስ በቀስ፣ እንቁላሉ ተራመደ።  [intended meaning: Slowly, slowly, the egg had walked.]
