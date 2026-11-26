@@ -37,3 +37,8 @@ Format: what broke -> what I tried -> what fixed it (or didn't).
 - **Cause:** Kaggle sets `MPLBACKEND` to the notebook's inline backend. The isolated uv environment has no `matplotlib_inline`, so matplotlib rejects it when torchmetrics imports it.
 - **Fix:** run with `MPLBACKEND=Agg` (headless backend). One-line change in the run cell.
 - **Lesson:** an environment variable inherited from the host notebook leaks into an isolated venv; override it when isolating.
+
+## F7: Cloudflare returned HTTP 400 once, then succeeded on retry
+- **What happened:** generating the s09 keyframe, the first request got `400 Bad Request` from Workers AI. The retry 1 s later with the identical prompt succeeded (18 s total).
+- **Handling:** `common.retry` caught it, and the failed attempt is in `runs.jsonl` as the first real `success: false` line (error `HTTPError 400`). I did not change the prompt.
+- **Open question:** a 400 normally means a bad request, so a retry should not help. Possible causes are a transient fault at the provider or an intermittent input filter; I cannot tell which from the response I log. Lesson: retrying all errors is crude, but it saved this run.

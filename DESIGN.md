@@ -23,7 +23,8 @@
 - **What worked:** the story and the proverb's meaning landed without any picture, and the tester wanted to hear the ending.
 - **What I changed because of it:**
   1. **Pauses.** Measured the gaps: narration filled only 2.4-6.4 s of each 8 s shot, so the radio cut had up to 5.6 s of silence, worst on the mother's proverb (2.4 s of speech in an 8 s shot). Shot durations are now 7, 7, 7, 7, 7, 8, 6, 7 s (was 8 each), and the end card is 5 s, so the film stays at 60 s or more. Only the shots whose duration changed re-rendered.
-  2. **Open, for me to fix with an Amharic check:** the unclear proverb line and the missing cue that the mother starts speaking. A proposed s04 narration that announces her speech is waiting for a native-speaker check before I commit it.
+  2. **Who is speaking.** Nothing told the listener the mother had just spoken. Added a new 3 s shot after the proverb where the narrator says one word, "አለቻት" ("she said to her"), over a close-up of an egg in a child's open palm (no face). It closes the quote and gives the proverb a beat. It has id `s09` but sits fifth-to-last in the array: ids are labels and the array is the timeline, so the other shots kept their ids and cached files (only 1 keyframe and 1 voice call were made). The film is now 64 s.
+  3. **Still open:** the proverb's delivery (tester: the verb seemed missing). The clip is not cut off (silence in its last 100 ms), so I will test a delivery instruction in E8 after the author listens to it.
 - **What I did not change:** the story, the order of shots and the proverb itself. One tester is not enough to rewrite them.
 
 ## User test 2: near-final cut
