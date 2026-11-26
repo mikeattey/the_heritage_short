@@ -27,4 +27,9 @@ Format: **E#: hypothesis** -> change -> result (numbers from runs.jsonl where po
 - **Change:** `pipeline/shots.py` renders each shot at 1920x1080 and 1080x1920 (8 s, 25 fps, zoom to 1.25x or a pan). First run crashed (crop wider than the scaled square); fixed by scaling to cover the target box first.
 - **Result:** 16 clips in 19 s wall time (about 79 s CPU). First full assemble (subtitle overlays, end card, ducking, loudnorm) took 53 s for both exports. Measured loudness -17.4 LUFS integrated, LRA 6.2 LU, against a -16 target. Caveat: the square keyframe loses about 44% of its height in 16:9, which cuts the top of the girl's head in s02.
 
-## E6: TODO
+## E6: Three ACE-Step 1.5 score candidates, one chosen
+- **Hypothesis:** the same brief ("warm, hopeful, slow, no vocals") with three different instrument palettes gives clearly different scores, and one of them will sit under quiet Amharic narration without competing with it.
+- **Change:** `notebooks/acestep_kaggle.ipynb` on a Kaggle T4: turbo DiT + 0.6B LM, 8 steps, shift 3.0, 72 s each. A = plucked guitar and hand percussion; B = gentle piano with a string pad; C = kalimba and marimba with a drone. Seeds 101 / 202 / 303.
+- **Result:** all three generated first time after the F6 fix. 37-42 s per candidate (about 0.65 GPU-minutes each), 61 s model load, $0. I chose **B (piano + strings)**. Reason: TODO (one sentence, from my listening notes). Final mix with B under narration measures -15.9 LUFS integrated, 68 s, both exports.
+- **Caveat:** one seed per palette, so the comparison is between palettes and not between seeds.
+

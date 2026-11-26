@@ -1,8 +1,8 @@
-"""Stage 3: music. ACE-Step 1.5 runs on Kaggle/Colab (notebooks/acestep_kaggle.ipynb) and writes
+"""Stage 3: music. The chosen candidate is committed as assets/score_source.flac. ACE-Step 1.5 runs on Kaggle/Colab (notebooks/acestep_kaggle.ipynb) and writes
 candidates to outputs/music/. This stage checks the chosen candidate exists and trims/pads it to the film length.
 Record the choice + reason in EXPERIMENTS.md and set storyboard.music.chosen."""
 import time
-from .common import load_storyboard, OUT, ffmpeg, log_call, input_hash, cached_path
+from .common import load_storyboard, ROOT, OUT, ffmpeg, log_call, input_hash, cached_path
 
 
 def main():
@@ -10,9 +10,10 @@ def main():
     chosen = sb["music"].get("chosen")
     if not chosen:
         raise SystemExit("Set storyboard.music.chosen to a file in outputs/music/ (generate candidates in the Kaggle notebook).")
-    src = OUT / "music" / chosen
-    if not src.exists():
-        raise SystemExit(f"{src} not found. Download candidates from the Kaggle notebook output.")
+    # committed copy in assets/ first (so a clean clone works), then fresh candidates in outputs/music/
+    src = next((d / chosen for d in (ROOT / "assets", OUT / "music") if (d / chosen).exists()), None)
+    if src is None:
+        raise SystemExit(f"{chosen} not found in assets/ or outputs/music/. Download candidates from the Kaggle notebook output.")
     total = sum(s["duration"] for s in sb["shots"]) + sb["end_card"].get("duration", 4)
     h = input_hash(chosen, total, src.stat().st_size)
     out = cached_path("music", "score", h, "wav")
