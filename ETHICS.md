@@ -1,7 +1,10 @@
 # ETHICS
 ## Consent record
-- No real person's face or voice appears. Visuals are illustrated (FLUX, no real-person likeness prompts); narration is a synthetic Gemini TTS voice, not a clone of any real person.
-- If a relative is depicted/named: TODO name, relationship, consent given (date, how).
+- **No real person's face or voice appears in the film.** Visuals are illustrated with FLUX; prompts never name or describe a real person's likeness. Narration is a synthetic Gemini TTS voice; no real person's voice is recorded or cloned.
+- **The characters are fictional.** The girl and the mother are invented illustrated characters, not portraits of my family members.
+- **The proverb is real**, from my family (my mother says it). It is a traditional Amharic proverb in common use. I mention my mother only as its source and have no recording of her. TODO: tell her the proverb is used in this film and record the date and how she agreed.
+- **The scene is imagined**, not a true family memory, and is labelled that way in the report and the public post.
+- **User-test participants** are viewers only; only first names or initials appear in DESIGN.md, with their agreement.
 
 ## Licences
 | Model / asset | Licence | Commercial use | Notes |
