@@ -80,3 +80,5 @@
 {"ts": "2026-11-26T19:31:40+0300", "stage": "music", "model": "ffmpeg-trim", "params": {"src": "score_source.flac", "total": 64}, "seed": null, "latency_s": 0.11, "cost_usd": 0.0, "local": true, "hash": "ddd3e7a9010b"}
 {"ts": "2026-11-26T19:32:00+0300", "stage": "assemble", "model": "ffmpeg", "params": {"aspect": "16x9", "total_s": 64.0, "score": "score_ddd3e7a9010b.wav"}, "seed": null, "latency_s": 19.68, "cost_usd": 0.0, "local": true}
 {"ts": "2026-11-26T19:32:20+0300", "stage": "assemble", "model": "ffmpeg", "params": {"aspect": "9x16", "total_s": 64.0, "score": "score_ddd3e7a9010b.wav"}, "seed": null, "latency_s": 19.69, "cost_usd": 0.0, "local": true}
+{"ts": "2026-11-26T19:35:45+0300", "stage": "experiment-delivery", "model": "gemini-3.8-flash-tts", "params": {"shot": "s05", "voice": "Aoede", "instruction": true}, "seed": null, "latency_s": 7.69, "cost_usd": 0.0}
+{"ts": "2026-11-26T19:35:55+0300", "stage": "experiment-delivery", "model": "gemini-3.8-flash-tts", "params": {"shot": "s05", "voice": "Aoede", "instruction": true}, "seed": null, "latency_s": 4.79, "cost_usd": 0.0}
