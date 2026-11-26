@@ -11,3 +11,6 @@ outputs/work/
 
 # keep the final narration clips: the free Gemini TTS tier allows only 10 requests per day (FAILURES F9), so a clean clone must not need to regenerate them
 !outputs/narration/*.wav
+
+# personal recording script, kept locally only
+WALKTHROUGH.md
