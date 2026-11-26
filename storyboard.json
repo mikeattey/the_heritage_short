@@ -17,7 +17,10 @@
       "duration": 7,
       "keyframe_prompt": "wide view of the empty kitchen at dawn, the clay griddle on its low stove, a woven basket of eggs in the centre foreground, soft sunlight through the window",
       "cast": [],
-      "motion": {"engine": "kenburns", "kind": "zoom_in"},
+      "motion": {
+        "engine": "kenburns",
+        "kind": "zoom_in"
+      },
       "speaker": "narrator",
       "narration": "በአንዲት ትንሽ ኩሽና ውስጥ፣ አንዲት ልጅ እንጀራ መጋገር እየተማረች ነበር።",
       "subtitle": "In a small kitchen, a girl was learning to bake injera."
@@ -27,8 +30,13 @@
       "reason": "Introduce the girl and the first failure: a torn injera on the griddle.",
       "duration": 7,
       "keyframe_prompt": "the girl standing at the clay griddle looking down at a torn, uneven injera, flour on her hands, centred medium shot",
-      "cast": ["girl"],
-      "motion": {"engine": "kenburns", "kind": "pan_right"},
+      "cast": [
+        "girl"
+      ],
+      "motion": {
+        "engine": "kenburns",
+        "kind": "pan_right"
+      },
       "speaker": "narrator",
       "narration": "የመጀመሪያው እንጀራዋ ተቀደደ። ሁለተኛውም እንዲሁ።",
       "subtitle": "Her first injera tore. So did the second."
@@ -38,8 +46,13 @@
       "reason": "Show the low point: discouragement, the moment the audience recognises themselves.",
       "duration": 7,
       "keyframe_prompt": "the girl sitting on a low wooden stool with her head down and a sad face, a burnt injera on a plate beside her, centred close-up, soft shadows",
-      "cast": ["girl"],
-      "motion": {"engine": "kenburns", "kind": "zoom_in"},
+      "cast": [
+        "girl"
+      ],
+      "motion": {
+        "engine": "kenburns",
+        "kind": "zoom_in"
+      },
       "speaker": "narrator",
       "narration": "ሦስተኛው ተቃጠለ። ልጅቷ ሁሉንም ተስፋ ቅርጣ ለመተው ፈለገች።",
       "subtitle": "The third one burned. The girl lost hope and wanted to quit."
@@ -49,8 +62,13 @@
       "reason": "Introduce the mother quietly, as hands only, and the egg that carries the proverb.",
       "duration": 7,
       "keyframe_prompt": "extreme close-up cropped at the wrist and forearm: only the mother's two hands and white embroidered sleeve lifting one egg from the woven basket, the image contains no face and no head, full-bleed illustration with no border, warm light, centred",
-      "cast": ["mother"],
-      "motion": {"engine": "kenburns", "kind": "pan_left"},
+      "cast": [
+        "mother"
+      ],
+      "motion": {
+        "engine": "kenburns",
+        "kind": "pan_left"
+      },
       "speaker": "narrator",
       "narration": "እናቷ ምንም ሳትናገር ከቅርጫቱ ውስጥ አንድ እንቁላል አነሳች።",
       "subtitle": "Her mother said nothing. She took an egg from the basket."
@@ -60,19 +78,43 @@
       "reason": "The turn: the mother speaks the proverb. First of at most two full views of her.",
       "duration": 7,
       "keyframe_prompt": "the mother kneeling to the girl's height and gently placing an egg into the girl's open palm, both faces warm and calm, centred medium shot",
-      "cast": ["girl", "mother"],
-      "motion": {"engine": "kenburns", "kind": "zoom_in"},
+      "cast": [
+        "girl",
+        "mother"
+      ],
+      "motion": {
+        "engine": "kenburns",
+        "kind": "zoom_in"
+      },
       "speaker": "mother",
       "narration": "ቀስ በቀስ እንቁላል በእግሩ ይሄዳል።",
       "subtitle": "Slowly, slowly, an egg walks on its own legs."
+    },
+    {
+      "id": "s09",
+      "reason": "Test 1 (Abdulhafiz): listeners could not tell the mother had just spoken. A one-word narrator tag after the proverb, over the egg in the girl's palm, closes the quote. Id s09 keeps the other shots' ids, so their cached keyframes and voices stay valid; the array order is the timeline.",
+      "duration": 3,
+      "keyframe_prompt": "extreme close-up cropped at the wrist: only a child's open palm holding one egg, the image contains no face and no head, full-bleed illustration with no border, warm light, centred",
+      "motion": {
+        "engine": "kenburns",
+        "kind": "zoom_in"
+      },
+      "speaker": "narrator",
+      "narration": "አለቻት።",
+      "subtitle": "she said."
     },
     {
       "id": "s06",
       "reason": "Compress weeks of practice into one image so the audience feels time pass.",
       "duration": 8,
       "keyframe_prompt": "the girl pouring batter onto the clay griddle with a hopeful smile, a stack of imperfect injera beside her, sunlight on the wall, centred",
-      "cast": ["girl"],
-      "motion": {"engine": "kenburns", "kind": "pan_right"},
+      "cast": [
+        "girl"
+      ],
+      "motion": {
+        "engine": "kenburns",
+        "kind": "pan_right"
+      },
       "speaker": "narrator",
       "narration": "ቀናት አለፉ፤ ሳምንታትም አለፉ። ልጅቷም በየቀኑ ደግማ ሞከረች።",
       "subtitle": "Days passed, then weeks. Every day, the girl tried again and again."
@@ -82,8 +124,13 @@
       "reason": "The payoff: the first perfect injera, the image the audience should remember.",
       "duration": 6,
       "keyframe_prompt": "close-up of one perfectly round, soft injera with fine bubble eyes on the clay griddle, steam rising in golden light, the girl's proud smile softly blurred behind it, centred",
-      "cast": ["girl"],
-      "motion": {"engine": "kenburns", "kind": "zoom_in"},
+      "cast": [
+        "girl"
+      ],
+      "motion": {
+        "engine": "kenburns",
+        "kind": "zoom_in"
+      },
       "speaker": "narrator",
       "narration": "አንድ ማለዳ፣ እንጀራው ክብ እና ለስላሳ ሆኖ ወጣ።",
       "subtitle": "One morning, the injera came out round and soft."
@@ -93,8 +140,14 @@
       "reason": "Emotional landing: the egg returns to the basket and mother and daughter share a quiet smile.",
       "duration": 7,
       "keyframe_prompt": "the girl placing the egg back into the woven basket while her mother smiles beside her, a finished round injera on a plate, warm golden light, centred wide shot",
-      "cast": ["girl", "mother"],
-      "motion": {"engine": "kenburns", "kind": "zoom_out"},
+      "cast": [
+        "girl",
+        "mother"
+      ],
+      "motion": {
+        "engine": "kenburns",
+        "kind": "zoom_out"
+      },
       "speaker": "narrator",
       "narration": "ቀስ በቀስ፣ እንቁላሉ ተራመደ።",
       "subtitle": "Slowly, slowly, the egg had walked."
