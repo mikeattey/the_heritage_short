@@ -31,3 +31,9 @@ Format: what broke -> what I tried -> what fixed it (or didn't).
 - **Diagnosis:** `sidechaincompress` ends when its sidechain input (the voice track) ends, so the score was cut there, and `-shortest` in the final mux trimmed the video to match.
 - **Fix:** `apad=whole_dur=<total>` on the voice track before the sidechain. Both exports are now 68.00 s with matching video and audio.
 - **Lesson:** check durations of every intermediate with ffprobe, not just that the command succeeds.
+
+## F6: ACE-Step import crash on Kaggle (matplotlib backend)
+- **Symptom:** `uv run python gen.py` died at `import acestep.handler` with `ValueError: Key backend: 'module://matplotlib_inline.backend_inline' is not a valid value`.
+- **Cause:** Kaggle sets `MPLBACKEND` to the notebook's inline backend. The isolated uv environment has no `matplotlib_inline`, so matplotlib rejects it when torchmetrics imports it.
+- **Fix:** run with `MPLBACKEND=Agg` (headless backend). One-line change in the run cell.
+- **Lesson:** an environment variable inherited from the host notebook leaks into an isolated venv; override it when isolating.
