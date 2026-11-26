@@ -29,14 +29,14 @@
       "id": "s02",
       "reason": "Introduce the girl and the first failure: a torn injera on the griddle.",
       "duration": 7,
-      "keyframe_prompt": "the girl standing at the clay griddle looking down at a torn, uneven injera, flour on her hands, centred medium shot",
+      "keyframe_prompt": "the girl standing at the clay griddle looking down at a torn, uneven injera, flour on her hands, centred medium shot, the injera surface densely covered with hundreds of tiny pinhole eyes in a fine honeycomb texture, not a few large holes",
       "cast": [
         "girl"
       ],
       "motion": {
         "engine": "kenburns",
         "kind": "pan_right",
-        "focus": 0.3
+        "focus": 0.2
       },
       "speaker": "narrator",
       "narration": "የመጀመሪያው እንጀራዋ ተቀደደ። ሁለተኛውም እንዲሁ።",
@@ -46,7 +46,7 @@
       "id": "s03",
       "reason": "Show the low point: discouragement, the moment the audience recognises themselves.",
       "duration": 7,
-      "keyframe_prompt": "the girl sitting on a low wooden stool with her head down and a sad face, a burnt injera on a plate beside her, centred close-up, soft shadows",
+      "keyframe_prompt": "the girl sitting on a low wooden stool with her head down and a sad face, a burnt injera on a plate beside her, centred close-up, soft shadows, the injera surface densely covered with hundreds of tiny pinhole eyes in a fine honeycomb texture, not a few large holes",
       "cast": [
         "girl"
       ],
@@ -111,7 +111,7 @@
       "id": "s06",
       "reason": "Compress weeks of practice into one image so the audience feels time pass.",
       "duration": 8,
-      "keyframe_prompt": "the girl pouring batter onto the clay griddle with a hopeful smile, a stack of imperfect injera beside her, sunlight on the wall, centred",
+      "keyframe_prompt": "the girl pouring batter onto the clay griddle with a hopeful smile, a stack of imperfect injera beside her, sunlight on the wall, centred, the injera surface densely covered with hundreds of tiny pinhole eyes in a fine honeycomb texture, not a few large holes",
       "cast": [
         "girl"
       ],
@@ -129,7 +129,7 @@
       "id": "s07",
       "reason": "The payoff: the first perfect injera, the image the audience should remember.",
       "duration": 6,
-      "keyframe_prompt": "close-up of one perfectly round, soft injera with fine bubble eyes on the clay griddle, steam rising in golden light, the girl's proud smile softly blurred behind it, centred",
+      "keyframe_prompt": "close-up of one perfectly round, soft injera with fine bubble eyes on the clay griddle, steam rising in golden light, the girl's proud smile softly blurred behind it, centred, the injera surface densely covered with hundreds of tiny pinhole eyes in a fine honeycomb texture, not a few large holes",
       "cast": [
         "girl"
       ],
@@ -147,7 +147,7 @@
       "id": "s08",
       "reason": "Emotional landing: the egg returns to the basket and mother and daughter share a quiet smile.",
       "duration": 7,
-      "keyframe_prompt": "the girl placing the egg back into the woven basket while her mother smiles beside her, a finished round injera on a plate, warm golden light, centred wide shot",
+      "keyframe_prompt": "the girl placing the egg back into the woven basket while her mother smiles beside her, a finished round injera on a plate, warm golden light, centred wide shot, the injera surface densely covered with hundreds of tiny pinhole eyes in a fine honeycomb texture, not a few large holes",
       "cast": [
         "girl",
         "mother"
