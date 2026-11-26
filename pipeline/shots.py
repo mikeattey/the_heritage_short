@@ -17,9 +17,9 @@ def keyframe_for(shot_id):
 
 def kenburns(img, out, w, h, dur, kind):
     n = int(dur * FPS)
-    z = {"zoom_in": f"min(1+0.0008*on,1.25)", "zoom_out": f"max(1.25-0.0008*on,1.0)"}.get(kind, "1.15")
+    z = {"zoom_in": f"1+0.25*on/{n}", "zoom_out": f"1.25-0.25*on/{n}"}.get(kind, "1.15")  # reaches 1.25x exactly at the last frame
     x = {"pan_left": f"(iw-iw/zoom)*(1-on/{n})", "pan_right": f"(iw-iw/zoom)*(on/{n})"}.get(kind, "iw/2-(iw/zoom/2)")
-    vf = (f"scale=-2:{h*2},crop={w*2}:{h*2},zoompan=z='{z}':x='{x}':y='ih/2-(ih/zoom/2)':d={n}:s={w}x{h}:fps={FPS},format=yuv420p")
+    vf = (f"scale={w*2}:{h*2}:force_original_aspect_ratio=increase,crop={w*2}:{h*2},zoompan=z='{z}':x='{x}':y='ih/2-(ih/zoom/2)':d={n}:s={w}x{h}:fps={FPS},format=yuv420p")
     ffmpeg("-i", img, "-vf", vf, "-t", dur, "-c:v", "libx264", "-preset", "veryfast", out)
 
 
