@@ -40,6 +40,7 @@
           },
           "speaker": {"enum": ["narrator", "mother"], "default": "narrator", "description": "Which TTS voice speaks this line"},
           "narration": {"type": "string", "description": "Spoken text, in the narration language (Amharic)"},
+          "narration_take": {"type": "integer", "minimum": 0, "default": 0, "description": "Re-roll the voice for this line: >0 is sent to the TTS as a seed and changes the cache key, so only this clip regenerates"},
           "subtitle": {"type": "string", "description": "English text burned in as subtitle"}
         }
       }

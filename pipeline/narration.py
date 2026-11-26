@@ -39,13 +39,16 @@ def main():
         if not s["narration"].strip():
             continue
         voice = voices[s.get("speaker", "narrator")]
+        take = s.get("narration_take", 0)
         params = {"text": s["narration"], "voice": voice}
+        if take:  # only when set, so every existing cache key stays the same
+            params["take"] = take
         h = input_hash(model, params)
         out = cached_path("narration", s["id"], h, "wav")
         if out.exists():
             print(f'{s["id"]}: cached'); continue
         body = {"contents": [{"parts": [{"text": s["narration"]}]}],
-                "generationConfig": {"responseModalities": ["AUDIO"],
+                "generationConfig": {"responseModalities": ["AUDIO"], **({"seed": take} if take else {}),
                                      "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}}}}
         t = time.time()
 

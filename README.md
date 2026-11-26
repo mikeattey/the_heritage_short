@@ -95,7 +95,7 @@ Every model call appends one line to `runs.jsonl` (stage, model, parameters, see
 - Subtitle and end-card text is drawn with Pillow using macOS system fonts (Helvetica, Kefa for Ethiopic script). On Linux or Windows, change the two font paths at the top of `pipeline/textimg.py`. Homebrew's FFmpeg has no `drawtext` or `subtitles` filter, which is why text is drawn this way (see FAILURES.md F4).
 - Keyframes are square and cropped per aspect ratio, so the 16:9 crop can cut the top of a character's head.
 - Characters are kept consistent by detailed text descriptions, not by a fixed reference image, so small differences between shots remain.
-- Gemini's free tier rate-limits narration (HTTP 429). The pipeline retries with backoff, and cached clips are never re-requested.
+- Gemini TTS on the free tier allows **3 requests per minute and 10 per day** (per project, `gemini-3.8-flash-tts`, observed 2026-11-26). A full narration run is 9 clips, so it nearly uses a day's allowance. The final clips are committed in `outputs/narration/`, so `make film` on a fresh clone makes no TTS calls; change a line and exactly one call is made. The pipeline retries with backoff on the per-minute limit, but a daily-limit 429 only clears the next day (use a second API key or wait).
 - Amharic narration was proofread by a native speaker (the author) and has not been checked by a professional translator.
 
 ## AI use and licences
