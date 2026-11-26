@@ -30,6 +30,7 @@ Limit: 2 of the 3 required testers in Test 1 and 1 in Test 2 (the same person as
 ## 3. The hardest problem: the Amharic voice
 
 Almost every technical failure was about the voice (FAILURES.md):
+
 - the free tier rate limit (F1) and then a **10 requests per day** limit I only saw after hitting it (F9);
 - Gemini returning a full WAV that I treated as raw audio, which put a click and noise on every clip's end (F2);
 - a delivery instruction that the model **read aloud** (E8);
