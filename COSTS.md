@@ -30,7 +30,7 @@ Not captured in `runs.jsonl`:
 
 | Service | Limit met | What I did |
 |---|---|---|
-| Gemini TTS (free) | HTTP 429 after about 5 requests in a minute (F1) | exponential backoff, 6 tries from 3 s; clips cached so a re-run only asks for missing lines |
+| Gemini TTS (free), `gemini-3.8-flash-tts` | **3 requests per minute and 10 requests per day per project**, read from the 429 response on 2026-11-26 (F1, F9) | exponential backoff for the per-minute limit; clips cached, and the final narration clips are committed in `outputs/narration/` so a clean clone does not spend the daily 10 |
 | Cloudflare Workers AI | 10,000 free Neurons per day, per Cloudflare's pricing page | 8 keyframes per full run is well within it; I did not hit the cap |
 | Kaggle GPU | weekly GPU quota, Internet must be switched on | three candidates in one session, loaded the model once |
 
