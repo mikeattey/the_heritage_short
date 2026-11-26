@@ -97,6 +97,7 @@ Every model call appends one line to `runs.jsonl` (stage, model, parameters, see
 - Characters are kept consistent by detailed text descriptions, not by a fixed reference image, so small differences between shots remain.
 - Gemini TTS on the free tier allows **3 requests per minute and 10 per day** (per project, `gemini-3.8-flash-tts`, observed 2026-11-26). A full narration run is 9 clips, so it nearly uses a day's allowance. The final clips are committed in `outputs/narration/`, so `make film` on a fresh clone makes no TTS calls; change a line and exactly one call is made. The pipeline retries with backoff on the per-minute limit, but a daily-limit 429 only clears the next day (use a second API key or wait).
 - Amharic narration was proofread by a native speaker (the author) and has not been checked by a professional translator.
+- Known wording issue: a user tester found "ተቀደደ" (torn) in shot s02 less natural than "ተበጣጠሰ" for a torn injera. Not changed in the final film (see DESIGN.md, Test 1).
 
 ## AI use and licences
 
