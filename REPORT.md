@@ -2,7 +2,7 @@
 
 **Qes Beqes (Slowly, Slowly)**: a 61-second illustrated AI short film in Amharic, with English subtitles, and the pipeline that regenerates it from one file. _Draft: marked passages are the author's to confirm._
 
-Links: film (9:16 main, 16:9), walkthrough, public post, repo: _to be added at submission_
+Links: film 9:16 (main) https://drive.google.com/file/d/1CASDdT_FSDUUt68cJ-5-_LMv-yN9P15m/view?usp=sharing · film 16:9 https://drive.google.com/file/d/1WaKvpfehkFj9Wpj2h1SKCZ-nH4c31O_P/view?usp=sharing · repo https://github.com/mikeattey/the_heritage_short · walkthrough and public post: _to be added_
 
 ## 1. What I made, and for whom
 
