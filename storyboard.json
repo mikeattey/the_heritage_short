@@ -101,7 +101,8 @@
       },
       "speaker": "narrator",
       "narration": "አለቻት።",
-      "subtitle": "she said."
+      "subtitle": "she said.",
+      "narration_take": 1
     },
     {
       "id": "s06",
@@ -117,7 +118,8 @@
       },
       "speaker": "narrator",
       "narration": "ቀናት አለፉ፤ ሳምንታትም አለፉ። ልጅቷም በየቀኑ ደግማ ሞከረች።",
-      "subtitle": "Days passed, then weeks. Every day, the girl tried again and again."
+      "subtitle": "Days passed, then weeks. Every day, the girl tried again and again.",
+      "narration_take": 2
     },
     {
       "id": "s07",
