@@ -1,16 +1,16 @@
 # COSTS
 
-Everything was built on free tiers, so the money paid is **$0.00**. The "list-price equivalent" column estimates what the same calls would cost at published paid rates. All counts and latencies come from [runs.jsonl](runs.jsonl) (totals as of 2026-11-26, including experiments and re-runs).
+Everything was built on free tiers, so the money paid is **$0.00**. The "list-price equivalent" column estimates what the same calls would cost at published paid rates. All counts and latencies come from [runs.jsonl](runs.jsonl) (totals as of 2026-11-26 evening, including experiments and re-runs; 173 lines, 17 of them failed attempts).
 
 ## Measured per stage
 
 | Stage | Model | Calls logged | Total latency | Per call | GPU min | List-price equivalent |
 |---|---|---|---|---|---|---|
-| keyframes | FLUX.2 klein 4B (Cloudflare Workers AI) | 14 | 170 s | 12 s | none (remote) | about $0.016 |
-| narration | Gemini 3.8 Flash TTS | 9 | 55 s | 6 s | none (remote) | about $0.01 |
+| keyframes | FLUX.2 klein 4B (Cloudflare Workers AI) | 20 | 251 s | 12.5 s | none (remote) | about $0.023 |
+| narration | Gemini 3.8 Flash TTS | 18 | 90 s | 5 s | none (remote) | about $0.02 |
 | music | ACE-Step 1.5 turbo + 0.6B LM (Kaggle T4) | 3 | 117 s | 39 s (plus 61 s model load once) | 1.95 | $0 (free Kaggle quota) |
-| shots | FFmpeg Ken Burns (local) | 16 | 19 s | 1.2 s | none | $0 |
-| assemble | FFmpeg (local) | 6 | 124 s | 21 s per export | none | $0 |
+| shots | FFmpeg Ken Burns (local) | 72 | 75 s | 1 s | none | $0 |
+| assemble | FFmpeg (local) | 32 | 601 s | 19 s per export | none | $0 |
 | music trim, radio cut | FFmpeg (local) | 3 | 16 s | n/a | none | $0 |
 
 One full from-scratch run of the pipeline for the final storyboard is 8 keyframes, 8 narration clips, 16 Ken Burns clips and 2 assemblies. That is about 145 s of API latency (8 x 12 s keyframes + 8 x 6 s narration), 19 s of shots and about 45 s of assembly. The 14 keyframe calls and 9 narration calls above are higher than 8 each because they include regenerations during experiments E2, E3 and E4 and the mother-consistency fix (F3).
