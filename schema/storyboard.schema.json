@@ -11,11 +11,12 @@
     "style_block": {"type": "string", "minLength": 10, "description": "Prepended to every keyframe prompt"},
     "character": {"type": "string", "minLength": 10, "description": "Fixed character description, prepended to every prompt"},
     "seed": {"type": "integer", "default": 42},
+    "narration_lang": {"type": "string", "default": "am", "description": "Language of spoken narration"},
     "shots": {
       "type": "array", "minItems": 5, "maxItems": 14,
       "items": {
         "type": "object",
-        "required": ["id", "reason", "duration", "keyframe_prompt", "narration"],
+        "required": ["id", "reason", "duration", "keyframe_prompt", "narration", "subtitle"],
         "additionalProperties": false,
         "properties": {
           "id": {"type": "string", "pattern": "^s[0-9]{2}$"},
@@ -31,7 +32,9 @@
               "wan_prompt": {"type": "string"}
             }
           },
-          "narration": {"type": "string"}
+          "speaker": {"enum": ["narrator", "mother"], "default": "narrator", "description": "Which TTS voice speaks this line"},
+          "narration": {"type": "string", "description": "Spoken text, in the narration language (Amharic)"},
+          "subtitle": {"type": "string", "description": "English text burned in as subtitle"}
         }
       }
     },
@@ -49,7 +52,11 @@
       "type": "object",
       "required": ["text"],
       "additionalProperties": false,
-      "properties": {"text": {"type": "string"}, "duration": {"type": "number", "default": 4}}
+      "properties": {
+        "text": {"type": "string"},
+        "subline": {"type": "string", "description": "Second line (the proverb in Amharic script)"},
+        "duration": {"type": "number", "default": 4}
+      }
     }
   }
 }

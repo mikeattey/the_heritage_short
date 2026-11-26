@@ -1,15 +1,17 @@
 """Stage 4: one TTS clip per shot via Gemini TTS. Cached by (text, voice, model)."""
-import base64, time, wave, requests
+import base64, os, time, wave, requests
 from .common import load_storyboard, need, input_hash, cached_path, retry, log_call
 
 
 def main():
     sb = load_storyboard()
-    key, model, voice = need("GEMINI_API_KEY"), need("GEMINI_TTS_MODEL"), need("GEMINI_TTS_VOICE")
+    key, model, narrator = need("GEMINI_API_KEY"), need("GEMINI_TTS_MODEL"), need("GEMINI_TTS_VOICE")
+    voices = {"narrator": narrator, "mother": os.environ.get("GEMINI_TTS_VOICE_MOTHER", "Aoede")}
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
     for s in sb["shots"]:
         if not s["narration"].strip():
             continue
+        voice = voices[s.get("speaker", "narrator")]
         params = {"text": s["narration"], "voice": voice}
         h = input_hash(model, params)
         out = cached_path("narration", s["id"], h, "wav")
