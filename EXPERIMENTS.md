@@ -22,4 +22,9 @@ Format: **E#: hypothesis** -> change -> result (numbers from runs.jsonl where po
 - **Change:** tightened the `mother` text and the s04 prompt, re-ran `make keyframes`.
 - **Result:** s01, s02, s03, s06, s07 cached; s04, s05, s08 regenerated (12-13 s each, 3 new lines in runs.jsonl). Mother now wears the same white embroidered dress and headscarf in all three, and s04 no longer shows a face.
 
-## E5: TODO
+## E5: Ken Burns on stills is fast enough to be the default moving shot
+- **Hypothesis:** FFmpeg `zoompan` on the 1024 px keyframes renders all shots in both aspect ratios in well under a minute on a Mac, with no GPU.
+- **Change:** `pipeline/shots.py` renders each shot at 1920x1080 and 1080x1920 (8 s, 25 fps, zoom to 1.25x or a pan). First run crashed (crop wider than the scaled square); fixed by scaling to cover the target box first.
+- **Result:** 16 clips in 19 s wall time (about 79 s CPU). First full assemble (subtitle overlays, end card, ducking, loudnorm) took 53 s for both exports. Measured loudness -17.4 LUFS integrated, LRA 6.2 LU, against a -16 target. Caveat: the square keyframe loses about 44% of its height in 16:9, which cuts the top of the girl's head in s02.
+
+## E6: TODO

@@ -19,3 +19,15 @@ Format: what broke -> what I tried -> what fixed it (or didn't).
 - **Fix:** only s04, s05 and s08 regenerated (cache). Outfit now matches; s04 shows hands only (a sliver of chin remains at the top edge).
 - **Lesson:** a vague description ("white shawl, headscarf") gives the model room to vary it; negative instructions in a prompt work only partly, so concrete visual detail helps more.
 - **Still imperfect:** the girl looks slightly younger in s05 and s08 than in s02/s03, and s01 has an oversized injera lying on the floor.
+
+## F4: Homebrew FFmpeg 9.1 has no drawtext or subtitles filter
+- **What broke:** the first assemble run died on the end card with `No such filter: 'drawtext'`. `ffmpeg -filters` shows neither `drawtext` nor `subtitles` (no libfreetype/libass), so burned-in subtitles and end-card text were impossible as written.
+- **What I tried:** considered building a custom FFmpeg (slow, and a stranger cloning the repo would hit the same wall).
+- **Fix:** render text to transparent PNGs with Pillow (`pipeline/textimg.py`) and use FFmpeg's `overlay` filter with `enable='between(t,a,b)'` for each subtitle cue; the end card is a full-frame PNG turned into a 4 s clip. Needs only `pip install pillow`. Kefa font handles the Amharic line.
+- **Lesson:** I assumed standard filters exist in a standard build. Check `ffmpeg -filters` for what you rely on before designing around it.
+
+## F5: the score vanished after the last narration line and the film shrank to 59 s
+- **What broke:** the first successful assemble produced 59.2 s files, not 68 s. The video track was 68 s, but the audio stopped at 59.26 s, the end of the last narration clip.
+- **Diagnosis:** `sidechaincompress` ends when its sidechain input (the voice track) ends, so the score was cut there, and `-shortest` in the final mux trimmed the video to match.
+- **Fix:** `apad=whole_dur=<total>` on the voice track before the sidechain. Both exports are now 68.00 s with matching video and audio.
+- **Lesson:** check durations of every intermediate with ffprobe, not just that the command succeeds.
