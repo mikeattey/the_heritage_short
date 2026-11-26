@@ -66,6 +66,7 @@ Format: **E#: hypothesis** -> change -> result (numbers from runs.jsonl where po
   - **Disagreement:** Claude also flagged s07 (minor register: "ክብ እና" vs "ክብና") and noted s08 (the closing line uses "ተራመደ", the proverb uses "ይሄዳል"). Gemini marked both ok. Gemini also said s05 is "the exact traditional proverb"; Claude agreed with medium-high confidence.
   - **Counts:** Gemini 1 flag / 8 ok; Claude 1 firm flag, 1 minor, 1 note.
   - **Cost and latency:** Gemini 27.3 s, 555 prompt + 527 output + 1,161 thinking tokens, free tier ($0 paid). Claude: answered in-session, so no separate API call, latency or cost was logged; I do not claim a figure.
-  - **Human rating:** the author (native speaker) rates each flag in the table below. _Pending._
+  - **Action taken:** the author confirmed the s03 typo and it was fixed to "ልጅቷ ተስፋ ቆርጣ ለመተው ፈለገች።" Only the s03 voice clip regenerated (1 Gemini TTS call, 4.5 s); the other 8 stayed cached, then both exports were rebuilt.
+  - **Human rating of the other flags (s07, s08):** _pending the author's call._
 - **Caveat:** neither model is a reliable judge of Amharic, and both flagged only what a reader could also see on the page; neither heard the audio. Agreement between two models is not proof. The value of the experiment is that two independent checks converged on a real error that I had missed.
 - **Failed attempts:** the planned model (Gemini 3.8 Flash) returned HTTP 503 and read-timeouts for about 10 attempts, and so did 3.7 Flash. A direct probe showed 3.6 Flash also 503 and 3.5 Flash working but slow (16 s for "say OK"). I switched to 3.5 Flash, so the Gemini side used an older model than the pipeline's default. All failed attempts are in `runs.jsonl` (see F8).
