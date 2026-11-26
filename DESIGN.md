@@ -28,6 +28,20 @@
 - **What I did not change:** the story, the order of shots and the proverb itself. One tester is not enough to rewrite them.
 
 ## User test 2: near-final cut
-- Date / format / testers (3+): TODO
-- What they said: TODO
-- What I changed because of it: TODO
+- **Date / format:** 2026-11-26, the vertical MP4 (a few revisions before the final: it had the earlier 7-8 s shot timing and the original voice takes), same 8-9 questions as Test 1 plus picture, subtitle, music and cultural-fit questions. **Testers so far: 1 of the 3 required (Abdu, the same person who did Test 1); more answers to be added here.**
+- **What they said (Abdu, 28):**
+  1. About a mother teaching her daughter consistency through an Ethiopian proverb.
+  2. The moment that stayed: the daughter's delighted look when her persistence pays off; it matched the feeling of success after repeated failures.
+  3. Subtitles: "correct and perfectly displayed, it really helped".
+  4. Music: "just right and consistent throughout".
+  5. Believable and respectful? Yes, but "the injera doesn't resemble an actual injera".
+  6. Pace: "a little slow, which is tolerable because the sound is soothing".
+  7. Compared with the audio-only version: "this version is cleaner than the previous one".
+  8. Would share it: yes, "concise video with good story telling, trying to teach an important lesson in life".
+  9. OK to use his first name: yes.
+- **What worked:** the story landed from the pictures as well as the audio, the subtitles, the music level and the ending all passed, and the tester said this cut was cleaner than the audio-only one, which is some evidence that the Test 1 changes (shorter pauses, the "she said" tag) helped. Caveat: one tester, who had also done Test 1.
+- **What I changed because of it:**
+  1. **The injera.** The generated injera had a few large round holes, like a cheese or a pancake, not the dense fine pinholes of real injera. I rewrote the keyframe prompt of the five shots where it appears (s02, s03, s06, s07, s08) to ask for "hundreds of tiny pinhole eyes in a fine honeycomb texture, not a few large holes". Only those five keyframes were regenerated (the other four stayed cached); the new injera has many more, smaller holes but is still not perfect. The new images also redrew the girl a little in those shots, and the crop focus of s02 was retuned (0.3 to 0.2) to keep her head in frame.
+  2. **Pace.** Not changed further: the tester found it tolerable and soothing, and the film is already shortened to 61 s.
+- **Not done:** the version he watched was older than the current one, so his answers do not cover the final s09 "she said" voice take or the crop changes.
+
