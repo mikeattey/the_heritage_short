@@ -14,7 +14,7 @@
     {
       "id": "s01",
       "reason": "Establish the one place and plant the egg motif in the first image.",
-      "duration": 8,
+      "duration": 7,
       "keyframe_prompt": "wide view of the empty kitchen at dawn, the clay griddle on its low stove, a woven basket of eggs in the centre foreground, soft sunlight through the window",
       "cast": [],
       "motion": {"engine": "kenburns", "kind": "zoom_in"},
@@ -25,7 +25,7 @@
     {
       "id": "s02",
       "reason": "Introduce the girl and the first failure: a torn injera on the griddle.",
-      "duration": 8,
+      "duration": 7,
       "keyframe_prompt": "the girl standing at the clay griddle looking down at a torn, uneven injera, flour on her hands, centred medium shot",
       "cast": ["girl"],
       "motion": {"engine": "kenburns", "kind": "pan_right"},
@@ -36,7 +36,7 @@
     {
       "id": "s03",
       "reason": "Show the low point: discouragement, the moment the audience recognises themselves.",
-      "duration": 8,
+      "duration": 7,
       "keyframe_prompt": "the girl sitting on a low wooden stool with her head down and a sad face, a burnt injera on a plate beside her, centred close-up, soft shadows",
       "cast": ["girl"],
       "motion": {"engine": "kenburns", "kind": "zoom_in"},
@@ -47,7 +47,7 @@
     {
       "id": "s04",
       "reason": "Introduce the mother quietly, as hands only, and the egg that carries the proverb.",
-      "duration": 8,
+      "duration": 7,
       "keyframe_prompt": "extreme close-up cropped at the wrist and forearm: only the mother's two hands and white embroidered sleeve lifting one egg from the woven basket, the image contains no face and no head, full-bleed illustration with no border, warm light, centred",
       "cast": ["mother"],
       "motion": {"engine": "kenburns", "kind": "pan_left"},
@@ -58,7 +58,7 @@
     {
       "id": "s05",
       "reason": "The turn: the mother speaks the proverb. First of at most two full views of her.",
-      "duration": 8,
+      "duration": 7,
       "keyframe_prompt": "the mother kneeling to the girl's height and gently placing an egg into the girl's open palm, both faces warm and calm, centred medium shot",
       "cast": ["girl", "mother"],
       "motion": {"engine": "kenburns", "kind": "zoom_in"},
@@ -80,7 +80,7 @@
     {
       "id": "s07",
       "reason": "The payoff: the first perfect injera, the image the audience should remember.",
-      "duration": 8,
+      "duration": 6,
       "keyframe_prompt": "close-up of one perfectly round, soft injera with fine bubble eyes on the clay griddle, steam rising in golden light, the girl's proud smile softly blurred behind it, centred",
       "cast": ["girl"],
       "motion": {"engine": "kenburns", "kind": "zoom_in"},
@@ -91,7 +91,7 @@
     {
       "id": "s08",
       "reason": "Emotional landing: the egg returns to the basket and mother and daughter share a quiet smile.",
-      "duration": 8,
+      "duration": 7,
       "keyframe_prompt": "the girl placing the egg back into the woven basket while her mother smiles beside her, a finished round injera on a plate, warm golden light, centred wide shot",
       "cast": ["girl", "mother"],
       "motion": {"engine": "kenburns", "kind": "zoom_out"},
@@ -108,6 +108,6 @@
   "end_card": {
     "text": "Made with AI",
     "subline": "ቀስ በቀስ እንቁላል በእግሩ ይሄዳል",
-    "duration": 4
+    "duration": 5
   }
 }

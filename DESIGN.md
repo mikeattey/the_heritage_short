@@ -13,9 +13,18 @@
 - **Why each shot exists:** see the `reason` field per shot in storyboard.json.
 
 ## User test 1: radio cut (narration over placeholder music on black)
-- Date / format / testers (3+, from audience): TODO
-- What they said: TODO
-- What I changed because of it: TODO
+- **Date / format:** 2026-11-26, `radio_cut.m4a` (64 s, Amharic narration, placeholder chord bed, black screen), sent as an audio file with the same 5 questions to everyone. **Testers so far: 1 of the 3 required; more answers to be added here.**
+- **What they said (Abdulhafiz, 28, Amharic speaker, from the audience):**
+  1. Story recalled correctly: a girl keeps ruining injera, nearly gives up, her mother tells her the egg proverb, shows a real egg, and she practises for weeks until she gets it right. He understood the metaphor.
+  2. Lesson: don't give up, be consistent, continued practice makes perfect.
+  3. Felt "caught at the moment" and eager to hear the ending.
+  4. Delivery felt "a little bit unnatural": many long pauses between sentences, and some sentences seem to end without a verb, which was confusing, for example when the mother delivered the proverb.
+  5. The two voices sound different. When the conversation starts it gets a bit confusing. The story is short, concise and to the point, but the long pauses between every speech make it feel longer.
+- **What worked:** the story and the proverb's meaning landed without any picture, and the tester wanted to hear the ending.
+- **What I changed because of it:**
+  1. **Pauses.** Measured the gaps: narration filled only 2.4-6.4 s of each 8 s shot, so the radio cut had up to 5.6 s of silence, worst on the mother's proverb (2.4 s of speech in an 8 s shot). Shot durations are now 7, 7, 7, 7, 7, 8, 6, 7 s (was 8 each), and the end card is 5 s, so the film stays at 60 s or more. Only the shots whose duration changed re-rendered.
+  2. **Open, for me to fix with an Amharic check:** the unclear proverb line and the missing cue that the mother starts speaking. A proposed s04 narration that announces her speech is waiting for a native-speaker check before I commit it.
+- **What I did not change:** the story, the order of shots and the proverb itself. One tester is not enough to rewrite them.
 
 ## User test 2: near-final cut
 - Date / format / testers (3+): TODO
