@@ -33,3 +33,18 @@ Format: **E#: hypothesis** -> change -> result (numbers from runs.jsonl where po
 - **Result:** all three generated first time after the F6 fix. 37-42 s per candidate (about 0.65 GPU-minutes each), 61 s model load, $0. I chose **B (piano + strings)**. Reason (mine): B goes with the theme, a patient, quiet piece for a story about going slowly. Reason (measured, added later): B has the lowest spectral centroid of the three (mean 1.17 kHz against 1.59 kHz for A and 1.57 kHz for C), so it puts less energy in the 1.5-4 kHz band where speech intelligibility sits and masks the voice least; its loudness range is also the widest (10.6 LU against 5.3 and 6.6), so it has quiet passages. All three measure about -15 LUFS before mixing. I did not run a listening test on the candidates themselves. Final mix with B under narration measures -15.9 LUFS integrated, 68 s, both exports.
 - **Caveat:** one seed per palette, so the comparison is between palettes and not between seeds.
 
+
+## E7: how hard should the voice push the score down? (sidechaincompress threshold)
+- **Hypothesis:** the shipped threshold 0.03 (first guess, never tested) ducks the score by about 10 dB while the narrator speaks, and a lower threshold buys only a marginal extra drop.
+- **Change:** `experiments/ducking.py` builds the voice-and-score graph from `assemble.py` with thresholds 0.015, 0.03 and 0.06 (ratio 8, attack 20 ms, release 400 ms fixed), then measures RMS of the score alone, with and without ducking, inside the narration windows and in the gaps. Run on the 61 s film with score B.
+- **Result:**
+
+| Threshold | Score drop while speaking | Voice above score while speaking | Score drop in gaps |
+|---|---|---|---|
+| 0.015 | 14.8 dB | 16.7 dB | 0.0 dB |
+| **0.03 (shipped)** | **10.7 dB** | **12.6 dB** | 0.0 dB |
+| 0.06 | 6.9 dB | 8.8 dB | 0.0 dB |
+
+  The hypothesis held for 0.03 (10.7 dB) and failed on "marginal": halving the threshold gave 4 dB more ducking, which is not marginal, and doubling it lost nearly 4 dB. The score is untouched in gaps in all three, so ducking only acts under speech. The drop scales about 4 dB per halving of the threshold.
+- **Decision:** keep 0.03 for now, pending a listening check of `outputs/experiments/ducking/listen_thr_*.wav` (voice plus ducked score at each setting; not committed, WAVs are git-ignored).
+- **Limits:** the numbers describe how much the score drops, not how it sounds, and I did not measure "pumping". I also tried to measure recovery time after each line, but the result (0 to 0.06 s) is not reliable, because the narration clips end with trailing quiet and the compressor has already released by the end of the file. I do not rely on it.
