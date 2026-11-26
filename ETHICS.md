@@ -12,7 +12,7 @@
 | FLUX.1 schnell | Apache-2.0 | yes | via Cloudflare Workers AI |
 | Gemini 3.8 Flash / TTS | Google API terms | per terms | verify free-tier data terms |
 | Wan 2.2 TI2V-5B | Apache-2.0 | yes | Kaggle |
-| ACE-Step 1.5 | check model card | TODO | original score |
+| ACE-Step 1.5 | MIT (model card and README; the weights repo has no separate licence file) | yes | original score, generated on Kaggle |
 | FFmpeg | LGPL/GPL | n/a | |
 
 ## Labelling plan
