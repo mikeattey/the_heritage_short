@@ -5,6 +5,7 @@ from .common import load_storyboard, OUT, ffmpeg, duration_of, log_call, input_h
 
 SIZES = {"16x9": (1920, 1080), "9x16": (1080, 1920)}
 FONT = "/System/Library/Fonts/Helvetica.ttc"
+FONT_ETHIOPIC = "/System/Library/Fonts/Supplemental/KefaIII.ttf"  # Helvetica has no Ethiopic glyphs
 
 
 def latest(stage, pattern):
@@ -31,7 +32,7 @@ def main():
             if d > s["duration"]:
                 print(f'WARN {s["id"]}: narration {d:.1f}s > shot {s["duration"]}s')
             nar.append((wav, t0 + 0.3))
-            srt.append(f"{len(srt)+1}\n{srt_time(t0+0.3)} --> {srt_time(t0+0.3+d)}\n{s['narration']}\n")
+            srt.append(f"{len(srt)+1}\n{srt_time(t0+0.3)} --> {srt_time(t0+0.3+d)}\n{s['subtitle']}\n")
         t0 += s["duration"]
     body_len = t0
     (work / "subs.srt").write_text("\n".join(srt))
@@ -45,8 +46,12 @@ def main():
         lst.write_text("".join(f"file '{c}'\n" for c in clips))
         ffmpeg("-f", "concat", "-safe", 0, "-i", lst, "-c", "copy", work / f"body_{name}.mp4")
         # end card
-        ffmpeg("-f", "lavfi", "-i", f"color=c=black:s={w}x{h}:d={end_d}:r=25",
-               "-vf", f"drawtext=fontfile={FONT}:text='{end['text']}':fontcolor=white:fontsize={h//18}:x=(w-tw)/2:y=(h-th)/2,format=yuv420p",
+        (work / "end_text.txt").write_text(end["text"])
+        (work / "end_subline.txt").write_text(end.get("subline", ""))
+        vf = (f"drawtext=fontfile={FONT}:textfile={work/'end_text.txt'}:fontcolor=white:fontsize={h//18}:x=(w-tw)/2:y=(h/2)-{h//12},"
+              f"drawtext=fontfile={FONT_ETHIOPIC}:textfile={work/'end_subline.txt'}:fontcolor=0xE8C27A:fontsize={h//26}:x=(w-tw)/2:y=(h/2)+{h//30},"
+              "format=yuv420p")
+        ffmpeg("-f", "lavfi", "-i", f"color=c=black:s={w}x{h}:d={end_d}:r=25", "-vf", vf,
                "-c:v", "libx264", work / f"end_{name}.mp4")
         fs = 26 if name == "16x9" else 18
         sub = f"subtitles={work/'subs.srt'}:force_style='FontSize={fs},Outline=2,MarginV={60 if name=='16x9' else 220}'"

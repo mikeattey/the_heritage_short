@@ -1,20 +1,100 @@
 {
-  "title": "TODO title",
-  "logline": "TODO one-sentence logline (pick the story, then write it in DESIGN.md)",
-  "feel": "TODO what the audience should feel at the end",
-  "style_block": "flat illustrated storybook style, warm earth tones, soft paper texture, gentle light",
-  "character": "TODO one fixed character description (age, clothing, hair, distinguishing detail)",
+  "title": "Qes Beqes (Slowly, Slowly)",
+  "logline": "A girl learning to bake injera wants to quit after her first torn attempts, until her mother puts an egg in her palm and reminds her how slowly good things grow.",
+  "feel": "Relief and permission to go slowly: small steady steps count as progress.",
+  "narration_lang": "am",
   "seed": 42,
+  "style_block": "flat illustrated storybook style, warm earth tones of ochre, terracotta and cream, soft paper texture, gentle morning light, no text, no letters",
+  "character": "THE GIRL: a 12-year-old Ethiopian girl with black braided hair, large expressive brown eyes, a mustard-yellow dress and a white cotton shawl. HER MOTHER: a woman in her late thirties with a white cotton netela shawl with a green-and-red border and a headscarf, kind face, often shown only as hands or from behind. SETTING: a small warm family kitchen with a clay mitad griddle, a woven basket of eggs, and sunlight through one window.",
   "shots": [
-    {"id": "s01", "reason": "Establish the place", "duration": 8, "keyframe_prompt": "TODO wide view of the place at dawn", "motion": {"engine": "kenburns", "kind": "zoom_in"}, "narration": "TODO narration line 1."},
-    {"id": "s02", "reason": "Introduce the character", "duration": 8, "keyframe_prompt": "TODO the character, medium shot", "motion": {"engine": "kenburns", "kind": "pan_right"}, "narration": "TODO narration line 2."},
-    {"id": "s03", "reason": "TODO", "duration": 8, "keyframe_prompt": "TODO shot three prompt", "narration": "TODO."},
-    {"id": "s04", "reason": "TODO", "duration": 8, "keyframe_prompt": "TODO shot four prompt", "narration": "TODO."},
-    {"id": "s05", "reason": "TODO", "duration": 8, "keyframe_prompt": "TODO shot five prompt", "narration": "TODO."},
-    {"id": "s06", "reason": "TODO", "duration": 8, "keyframe_prompt": "TODO shot six prompt", "narration": "TODO."},
-    {"id": "s07", "reason": "TODO", "duration": 8, "keyframe_prompt": "TODO shot seven prompt", "narration": "TODO."},
-    {"id": "s08", "reason": "Emotional landing", "duration": 8, "keyframe_prompt": "TODO final image", "motion": {"engine": "kenburns", "kind": "zoom_out"}, "narration": "TODO closing line."}
+    {
+      "id": "s01",
+      "reason": "Establish the one place and plant the egg motif in the first image.",
+      "duration": 8,
+      "keyframe_prompt": "wide view of a small warm family kitchen at dawn, clay griddle on a low stove, a woven basket of eggs in the foreground, sunlight through the window",
+      "motion": {"engine": "kenburns", "kind": "zoom_in"},
+      "speaker": "narrator",
+      "narration": "በአንዲት ትንሽ ኩሽና ውስጥ፣ አንዲት ልጅ እንጀራ መጋገር እየተማረች ነበር።",
+      "subtitle": "In a small kitchen, a girl was learning to bake injera."
+    },
+    {
+      "id": "s02",
+      "reason": "Introduce the girl and the first failure: a torn injera on the griddle.",
+      "duration": 8,
+      "keyframe_prompt": "the girl standing over a clay griddle looking at a torn, uneven injera, flour on her hands, medium shot",
+      "motion": {"engine": "kenburns", "kind": "pan_right"},
+      "speaker": "narrator",
+      "narration": "የመጀመሪያው እንጀራዋ ተቀደደ። ሁለተኛውም እንዲሁ።",
+      "subtitle": "Her first injera tore. So did the second."
+    },
+    {
+      "id": "s03",
+      "reason": "Show the low point: discouragement, the moment the audience recognises themselves.",
+      "duration": 8,
+      "keyframe_prompt": "the girl sitting on a low stool with her head down, a burnt injera on a plate beside her, close-up, soft shadows",
+      "motion": {"engine": "kenburns", "kind": "zoom_in"},
+      "speaker": "narrator",
+      "narration": "ሦስተኛው ተቃጠለ። ልጅቷ ሁሉንም ለመተው ፈለገች።",
+      "subtitle": "The third one burned. The girl wanted to quit."
+    },
+    {
+      "id": "s04",
+      "reason": "Introduce the mother quietly, as hands only, and the egg that carries the proverb.",
+      "duration": 8,
+      "keyframe_prompt": "close-up of a mother's hands lifting one egg from a woven basket, warm light, only hands and sleeve visible",
+      "motion": {"engine": "kenburns", "kind": "pan_left"},
+      "speaker": "narrator",
+      "narration": "እናቷ ምንም ሳትናገር ከቅርጫቱ ውስጥ አንድ እንቁላል አነሳች።",
+      "subtitle": "Her mother said nothing. She took an egg from the basket."
+    },
+    {
+      "id": "s05",
+      "reason": "The turn: the mother speaks the proverb. First of at most two full views of her.",
+      "duration": 8,
+      "keyframe_prompt": "the mother kneeling to the girl's height and placing an egg gently into the girl's open palm, both faces warm and calm, medium shot",
+      "motion": {"engine": "kenburns", "kind": "zoom_in"},
+      "speaker": "mother",
+      "narration": "ቀስ በቀስ እንቁላል በእግሩ ይሄዳል።",
+      "subtitle": "Slowly, slowly, an egg walks on its own legs."
+    },
+    {
+      "id": "s06",
+      "reason": "Compress weeks of practice into one image so the audience feels time pass.",
+      "duration": 8,
+      "keyframe_prompt": "the girl pouring batter onto the griddle, a stack of imperfect injera beside her, sun moving across the kitchen wall, hopeful expression",
+      "motion": {"engine": "kenburns", "kind": "pan_right"},
+      "speaker": "narrator",
+      "narration": "ቀናት አለፉ፤ ሳምንታትም አለፉ። በየቀኑ ደግማ ሞከረች።",
+      "subtitle": "Days passed, then weeks. Every day, she tried again."
+    },
+    {
+      "id": "s07",
+      "reason": "The payoff: the first perfect injera, the image the audience should remember.",
+      "duration": 8,
+      "keyframe_prompt": "close-up of a perfectly round, soft injera with fine eyes on the clay griddle, steam rising in golden light, the girl's proud smile blurred behind",
+      "motion": {"engine": "kenburns", "kind": "zoom_in"},
+      "speaker": "narrator",
+      "narration": "አንድ ማለዳ፣ እንጀራው ክብ እና ለስላሳ ሆኖ ወጣ።",
+      "subtitle": "One morning, the injera came out round and soft."
+    },
+    {
+      "id": "s08",
+      "reason": "Emotional landing: the egg returns to the basket and mother and daughter share a quiet smile.",
+      "duration": 8,
+      "keyframe_prompt": "the girl placing the egg back into the woven basket as her mother smiles beside her, the finished injera on a plate, warm golden light, wide shot",
+      "motion": {"engine": "kenburns", "kind": "zoom_out"},
+      "speaker": "narrator",
+      "narration": "ቀስ በቀስ፣ እንቁላሉ ተራመደ።",
+      "subtitle": "Slowly, slowly, the egg had walked."
+    }
   ],
-  "music": {"prompt": "TODO gentle acoustic instrumental, warm, slow tempo, no vocals", "duration": 70},
-  "end_card": {"text": "Made with AI", "duration": 4}
+  "music": {
+    "prompt": "gentle acoustic instrumental, warm and hopeful, slow tempo around 70 BPM, soft plucked strings and light percussion inspired by Ethiopian pentatonic melodies, no vocals",
+    "duration": 70
+  },
+  "end_card": {
+    "text": "Made with AI",
+    "subline": "ቀስ በቀስ እንቁላል በእግሩ ይሄዳል",
+    "duration": 4
+  }
 }
