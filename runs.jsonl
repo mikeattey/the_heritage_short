@@ -8,3 +8,4 @@
 {"ts": "2026-11-26T15:39:19+0300", "stage": "narration", "model": "gemini-3.8-flash-tts", "params": {"text": "አንድ ማለዳ፣ እንጀራው ክብ እና ለስላሳ ሆኖ ወጣ።", "voice": "Kore"}, "seed": null, "latency_s": 5.28, "cost_usd": 0.0, "shot": "s07", "hash": "8ffbe89f4856"}
 {"ts": "2026-11-26T15:39:22+0300", "stage": "narration", "model": "gemini-3.8-flash-tts", "params": {"text": "ቀስ በቀስ፣ እንቁላሉ ተራመደ።", "voice": "Kore"}, "seed": null, "latency_s": 3.58, "cost_usd": 0.0, "shot": "s08", "hash": "6f827bab2f8d"}
 {"ts": "2026-11-26T15:39:45+0300", "stage": "radiocut", "model": "ffmpeg", "params": {"shots": 8, "total_s": 64.0}, "seed": null, "latency_s": 10.21, "cost_usd": 0.0, "local": true}
+{"ts": "2026-11-26T15:49:17+0300", "stage": "radiocut", "model": "ffmpeg", "params": {"shots": 8, "total_s": 64.0}, "seed": null, "latency_s": 5.38, "cost_usd": 0.0, "local": true}
