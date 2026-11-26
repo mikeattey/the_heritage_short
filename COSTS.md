@@ -17,7 +17,7 @@ One full from-scratch run of the pipeline for the final storyboard is 8 keyframe
 
 Not captured in `runs.jsonl`:
 - **Kaggle session time:** install (`uv sync`) and about 10 GB of weight downloads took most of the roughly 20-40 minutes the notebook was open. Only generation and model-load time are logged.
-- **Failed and retried calls:** retries (for example the Gemini 429s in F1) are printed to the terminal but not written to `runs.jsonl`. The counts above are successful calls.
+- **Failed and retried calls:** the counts above are successful calls. Since the retry-logging change, every failed attempt is also a line in `runs.jsonl` with `success: false`, so later runs show retries and failures. Earlier ones, such as the Gemini 429s in F1, were only printed to the terminal and are not in the log.
 - **My time:** roughly the full working day, spread across setup, prompt iteration, listening and testing.
 
 ## How the list-price equivalents were worked out

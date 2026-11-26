@@ -64,7 +64,7 @@ Not handled, on purpose: partial-failure alerts and cost caps. The tool is run b
 
 ## Observability
 
-`common.log_call` appends one JSON line per model or FFmpeg call to `runs.jsonl`: timestamp, stage, model, params, seed, latency, cost, plus `local: true` for FFmpeg steps. Kaggle runs are added by hand from the notebook's own log (`kaggle_runs.jsonl`) with `gpu_minutes` and `model_load_s`. Retries and failed calls are printed but not logged (see COSTS.md).
+`common.log_call` appends one JSON line per model or FFmpeg call to `runs.jsonl`: timestamp, stage, model, params, seed, latency, cost, plus `local: true` for FFmpeg steps. Kaggle runs are added by hand from the notebook's own log (`kaggle_runs.jsonl`) with `gpu_minutes` and `model_load_s`. From now on, every failed attempt inside `common.retry` is also logged with `success: false`, `attempt`, `of`, the error type or HTTP status (never the message, which can carry URLs) and `final: true` on the last one. Successful lines carry no `success` field, so filter on `success != false` when counting calls. Retries before this change (the F1 429s) were only printed.
 
 ## Audio chain (the part with most tuning)
 

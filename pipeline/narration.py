@@ -53,7 +53,7 @@ def main():
             r = requests.post(url, headers={"x-goog-api-key": key}, json=body, timeout=120)
             r.raise_for_status()
             return base64.b64decode(r.json()["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
-        data = retry(call, tries=6, base=3.0)  # free tier 429s: waits 1, 3, 9, 27, 81 s
+        data = retry(call, tries=6, base=3.0, log={"stage": "narration", "model": model, "params": params, "shot": s["id"], "hash": h})  # free tier 429s: waits 1, 3, 9, 27, 81 s
         write_wav(out, data)
         log_call("narration", model, params, None, time.time() - t, shot=s["id"], hash=h)
         print(f'{s["id"]}: generated')

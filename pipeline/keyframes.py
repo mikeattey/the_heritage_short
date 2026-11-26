@@ -39,7 +39,8 @@ def main():
         if out.exists():
             print(f'{s["id"]}: cached'); continue
         t = time.time()
-        out.write_bytes(retry(lambda: generate(acct, tok, model, prompt, use_ref), tries=5, base=3.0))
+        out.write_bytes(retry(lambda: generate(acct, tok, model, prompt, use_ref), tries=5, base=3.0,
+                              log={"stage": "keyframes", "model": model, "params": params, "shot": s["id"], "hash": h}))
         log_call("keyframes", model, params, None, time.time() - t, shot=s["id"], hash=h)
         print(f'{s["id"]}: generated ({time.time() - t:.0f}s)')
 
