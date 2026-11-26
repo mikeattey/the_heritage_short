@@ -19,7 +19,7 @@ Checked 2026-11-26 against the primary pages linked below (model cards and terms
 | Pillow, jsonschema, requests | HPND, MIT, Apache-2.0 | yes | Python dependencies, installed by `make setup`. |
 | System fonts (Helvetica, Kefa) | Apple system licence | n/a | Used only to render subtitles and the end card on my own Mac. Fonts are not redistributed in the repo. |
 
-Open point: no output ownership is stated for FLUX, and Google states it will not claim ownership of Gemini output. I make no claim to copyright over the AI-generated images, voice or score, and the repo's own code is the part I release. A licence file for the repo's code is still to add.
+Open point: no output ownership is stated for FLUX, and Google states it will not claim ownership of Gemini output. I make no claim to copyright over the AI-generated images, voice or score, and the repo's own code is the part I release. The repo's own code is MIT-licensed (see `LICENSE`); the generated images, narration and score are AI output and are not covered by that licence.
 
 ## Labelling plan
 End card "Made with AI" in both exports; platform AI label switched on in the public post; this repo documents every model used.

@@ -100,4 +100,4 @@ Every model call appends one line to `runs.jsonl` (stage, model, parameters, see
 
 ## AI use and licences
 
-Everything in the film is AI-generated or synthetic: no real person's face or voice appears, and the characters are invented. The end card reads "Made with AI". Licences for each model are listed in [ETHICS.md](ETHICS.md).
+Everything in the film is AI-generated or synthetic: no real person's face or voice appears, and the characters are invented. The end card reads "Made with AI". Licences for each model are listed in [ETHICS.md](ETHICS.md). The pipeline code is MIT-licensed (see [LICENSE](LICENSE)).
