@@ -30,6 +30,24 @@ def write_wav(path, data):
         w.setnchannels(ch); w.setsampwidth(width); w.setframerate(rate); w.writeframes(pcm)
 
 
+def clip_params(s, model, voices):
+    """The inputs that define a narration clip (also its cache key). `narration_take` is added only when set."""
+    params = {"text": s["narration"], "voice": voices[s.get("speaker", "narrator")]}
+    if s.get("narration_take", 0):
+        params["take"] = s["narration_take"]
+    return params
+
+
+def clip_for(s):
+    """Path of the clip the storyboard asks for, not merely the newest file for that shot: assemble uses this so
+    a re-rolled or older take on disk can never be picked by accident."""
+    from .common import load_env
+    load_env()
+    model = os.environ["GEMINI_TTS_MODEL"]
+    voices = {"narrator": os.environ["GEMINI_TTS_VOICE"], "mother": os.environ.get("GEMINI_TTS_VOICE_MOTHER", "Aoede")}
+    return cached_path("narration", s["id"], input_hash(model, clip_params(s, model, voices)), "wav")
+
+
 def main():
     sb = load_storyboard()
     key, model, narrator = need("GEMINI_API_KEY"), need("GEMINI_TTS_MODEL"), need("GEMINI_TTS_VOICE")
@@ -40,9 +58,7 @@ def main():
             continue
         voice = voices[s.get("speaker", "narrator")]
         take = s.get("narration_take", 0)
-        params = {"text": s["narration"], "voice": voice}
-        if take:  # only when set, so every existing cache key stays the same
-            params["take"] = take
+        params = clip_params(s, model, voices)
         h = input_hash(model, params)
         out = cached_path("narration", s["id"], h, "wav")
         if out.exists():

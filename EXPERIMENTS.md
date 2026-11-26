@@ -70,3 +70,13 @@ Format: **E#: hypothesis** -> change -> result (numbers from runs.jsonl where po
   - **Human rating of the other flags (s07, s08):** _pending the author's call._
 - **Caveat:** neither model is a reliable judge of Amharic, and both flagged only what a reader could also see on the page; neither heard the audio. Agreement between two models is not proof. The value of the experiment is that two independent checks converged on a real error that I had missed.
 - **Failed attempts:** the planned model (Gemini 3.8 Flash) returned HTTP 503 and read-timeouts for about 10 attempts, and so did 3.7 Flash. A direct probe showed 3.6 Flash also 503 and 3.5 Flash working but slow (16 s for "say OK"). I switched to 3.5 Flash, so the Gemini side used an older model than the pipeline's default. All failed attempts are in `runs.jsonl` (see F8).
+
+## E10: does a seed make Gemini TTS repeatable, and can I re-roll a mismatched voice?
+- **Hypothesis:** sending a `seed` in `generationConfig` gives a different clip per seed, and the same seed returns the same clip, so `narration_take` in the storyboard would pin a chosen voice.
+- **Change:** added optional `narration_take` per shot (sent as `seed`, part of the cache key). Used a second API key and project because the first hit the free daily limit (F9). `experiments/takes.py` generated takes 1, 2 and 3 of the one-word line "አለቻት።" (s09) through the real pipeline, then regenerated take 1 a second time.
+- **Result:**
+  - Different seeds give different clips: 0.90 s, 0.96 s and 1.22 s, against 0.87 s for the unseeded original.
+  - **The same seed does not repeat:** take 1 came out 0.90 s the first time and 1.00 s the second, with different bytes. The hypothesis is half wrong: re-rolling works, repeatability does not.
+  - A rough brightness measure (mean spectral centroid) puts the narrator's full lines between 2.2 and 3.4 kHz, and the unseeded one-word clip at 3.7 kHz, the highest of all, which matches the "different voice" complaint. Takes 1-3 are at 3.1-3.5 kHz, closer to the others. This is a weak proxy on a 1-second clip, so the author's ear decides.
+- **Consequence:** `narration_take` is a re-roll button, not a reproducibility guarantee. What makes the film reproducible is committing the chosen clip (`outputs/narration/`), not the seed. Found on the way: `assemble` took the newest file for a shot, so a re-rolled take could silently replace the chosen one; it now asks the narration stage for the exact clip the storyboard defines (`clip_for`).
+- **Cost:** 5 TTS calls on the second key (3 takes, 1 repeat, 1 earlier test on the first key).

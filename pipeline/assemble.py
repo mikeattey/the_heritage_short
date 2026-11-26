@@ -2,6 +2,7 @@
 burn English subtitles (Pillow PNG overlays), append the AI end card. Exports 16:9 and 9:16 to outputs/final/."""
 import time
 from .common import load_storyboard, OUT, ffmpeg, duration_of, log_call
+from .narration import clip_for
 from .textimg import subtitle_png, end_card_png
 
 SIZES = {"16x9": (1920, 1080), "9x16": (1080, 1920)}
@@ -27,7 +28,9 @@ def main():
     t0, cues, nar = 0.0, [], []
     for s in sb["shots"]:
         if s["narration"].strip():
-            wav = latest("narration", f'{s["id"]}_*.wav')
+            wav = clip_for(s)
+            if not wav.exists():
+                raise SystemExit(f'Missing narration clip for {s["id"]} ({wav.name}); run make narration')
             d = duration_of(wav)
             if d > s["duration"]:
                 print(f'WARN {s["id"]}: narration {d:.1f}s > shot {s["duration"]}s')
