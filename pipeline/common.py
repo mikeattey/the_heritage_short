@@ -44,13 +44,27 @@ def cached_path(stage, name, h, ext):
     return d / f"{name}_{h}.{ext}"
 
 
-def retry(fn, tries=4, base=2.0):
-    """Exponential backoff; re-raises after the last attempt."""
+def _short_error(e):
+    """Exception type and HTTP status only. Messages can carry URLs (account ids), so they are not logged."""
+    code = getattr(getattr(e, "response", None), "status_code", None)
+    return f"{type(e).__name__} {code}" if code else type(e).__name__
+
+
+def retry(fn, tries=4, base=2.0, log=None):
+    """Exponential backoff; re-raises after the last attempt.
+    log = {"stage", "model", "params", ...extras}: every failed attempt is appended to runs.jsonl with
+    success=false, the attempt number and the error type/status (a final failure has final=true)."""
     for i in range(tries):
+        t = time.time()
         try:
             return fn()
         except Exception as e:  # noqa: BLE001
-            if i == tries - 1:
+            last = i == tries - 1
+            if log:
+                extra = {k: v for k, v in log.items() if k not in ("stage", "model", "params")}
+                log_call(log["stage"], log["model"], log.get("params", {}), None, time.time() - t,
+                         success=False, attempt=i + 1, of=tries, error=_short_error(e), final=last, **extra)
+            if last:
                 raise
             wait = base ** i
             print(f"  retry {i + 1}/{tries - 1} after error: {e} (sleep {wait:.0f}s)")
