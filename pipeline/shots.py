@@ -15,11 +15,11 @@ def keyframe_for(shot_id):
     return c[-1]
 
 
-def kenburns(img, out, w, h, dur, kind):
+def kenburns(img, out, w, h, dur, kind, focus=0.5, focus_x=0.5):
     n = int(dur * FPS)
     z = {"zoom_in": f"1+0.25*on/{n}", "zoom_out": f"1.25-0.25*on/{n}"}.get(kind, "1.15")  # reaches 1.25x exactly at the last frame
     x = {"pan_left": f"(iw-iw/zoom)*(1-on/{n})", "pan_right": f"(iw-iw/zoom)*(on/{n})"}.get(kind, "iw/2-(iw/zoom/2)")
-    vf = (f"scale={w*2}:{h*2}:force_original_aspect_ratio=increase,crop={w*2}:{h*2},zoompan=z='{z}':x='{x}':y='ih/2-(ih/zoom/2)':d={n}:s={w}x{h}:fps={FPS},format=yuv420p")
+    vf = (f"scale={w*2}:{h*2}:force_original_aspect_ratio=increase,crop={w*2}:{h*2}:x=(iw-ow)*{focus_x}:y=(ih-oh)*{focus},zoompan=z='{z}':x='{x}':y='ih/2-(ih/zoom/2)':d={n}:s={w}x{h}:fps={FPS},format=yuv420p")
     ffmpeg("-i", img, "-vf", vf, "-t", dur, "-c:v", "libx264", "-preset", "veryfast", out)
 
 
@@ -32,6 +32,9 @@ def main():
             wan = list((OUT / "shots").glob(f'{s["id"]}_wan.mp4')) if m.get("engine") == "wan" else []
             params = {"engine": "wan" if wan else "kenburns", "kind": m.get("kind", "zoom_in"), "dur": s["duration"],
                       "size": [w, h], "keyframe": kf.name, "wan": [p.name for p in wan]}
+            for k in ("focus", "focus_x"):  # only when set, so existing cache keys stay valid
+                if m.get(k, 0.5) != 0.5:
+                    params[k] = m[k]
             h8 = input_hash(params)
             out = cached_path("shots", f'{s["id"]}_{name}', h8, "mp4")
             if out.exists():
@@ -41,7 +44,7 @@ def main():
                 ffmpeg("-i", wan[0], "-vf", f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},format=yuv420p",
                        "-t", s["duration"], "-c:v", "libx264", out)
             else:
-                kenburns(kf, out, w, h, s["duration"], params["kind"])
+                kenburns(kf, out, w, h, s["duration"], params["kind"], m.get("focus", 0.5), m.get("focus_x", 0.5))
             log_call("shots", params["engine"], params, None, time.time() - t, shot=s["id"], hash=h8, local=True)
             print(f'{s["id"]} {name}: rendered')
 

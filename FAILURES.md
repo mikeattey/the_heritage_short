@@ -54,3 +54,8 @@ Format: what broke -> what I tried -> what fixed it (or didn't).
 - **Impact:** no TTS until about 09:30 EAT the next day, after the deadline on this key; the planned s09 voice re-roll and any live narration change in the walkthrough cannot use it.
 - **Handling:** (1) committed the final narration clips so a clean clone makes zero TTS calls; (2) the walkthrough can change an image prompt instead of a narration line (Cloudflare's daily allowance is much larger); (3) a second API key from a new project has its own quota; (4) added `narration_take` so a voice re-roll is a storyboard field, not a hand edit.
 - **Lesson:** read the quota response body, not just the status code. A per-minute limit and a per-day limit look identical (429) but need opposite handling: wait, or stop. The retry loop should not keep retrying a daily limit, since each retry burns another request. **Not fixed yet:** `common.retry` still retries daily-limit 429s.
+
+## F10: cache key did not include the filter code, so a fixed bug stayed cached
+- **What happened:** while adding crop focus I first made `focus` shift both axes, so every 9:16 clip with a focus value was cropped left of centre. I fixed the filter, but `shots` printed "cached" and rebuilt the film with the broken clips, because the cache key is a hash of the inputs (keyframe, motion, duration, size) and not of the code that renders them.
+- **Fix:** deleted the six stale 9:16 clips by hand and re-ran. Found because I looked at the 9:16 frames, not because any check failed.
+- **Lesson:** input-hash caching is only as safe as its key. A change to the rendering code needs either a version string in the key or a manual `make clean`. Not fixed in code: a `RENDER_VERSION` in the hash would solve it for a future change.

@@ -35,7 +35,9 @@
             "properties": {
               "engine": {"enum": ["kenburns", "wan"], "default": "kenburns"},
               "kind": {"enum": ["zoom_in", "zoom_out", "pan_left", "pan_right"], "default": "zoom_in"},
-              "wan_prompt": {"type": "string"}
+              "wan_prompt": {"type": "string"},
+              "focus": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.5, "description": "Vertical position of the 16:9 crop window on the square keyframe: 0 = top, 0.5 = centre, 1 = bottom. No effect on 9:16, which keeps the full height"},
+              "focus_x": {"type": "number", "minimum": 0, "maximum": 1, "default": 0.5, "description": "Horizontal position of the 9:16 crop window on the square keyframe: 0 = left, 0.5 = centre, 1 = right. No effect on 16:9"}
             }
           },
           "speaker": {"enum": ["narrator", "mother"], "default": "narrator", "description": "Which TTS voice speaks this line"},

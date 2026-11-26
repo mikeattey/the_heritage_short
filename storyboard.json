@@ -35,7 +35,8 @@
       ],
       "motion": {
         "engine": "kenburns",
-        "kind": "pan_right"
+        "kind": "pan_right",
+        "focus": 0.3
       },
       "speaker": "narrator",
       "narration": "የመጀመሪያው እንጀራዋ ተቀደደ። ሁለተኛውም እንዲሁ።",
@@ -51,7 +52,8 @@
       ],
       "motion": {
         "engine": "kenburns",
-        "kind": "zoom_in"
+        "kind": "zoom_in",
+        "focus": 0.3
       },
       "speaker": "narrator",
       "narration": "ሦስተኛው ተቃጠለ። ልጅቷ ተስፋ ቆርጣ ለመተው ፈለገች።",
@@ -84,7 +86,8 @@
       ],
       "motion": {
         "engine": "kenburns",
-        "kind": "zoom_in"
+        "kind": "zoom_in",
+        "focus": 0.3
       },
       "speaker": "mother",
       "narration": "ቀስ በቀስ እንቁላል በእግሩ ይሄዳል።",
@@ -114,7 +117,8 @@
       ],
       "motion": {
         "engine": "kenburns",
-        "kind": "pan_right"
+        "kind": "pan_right",
+        "focus": 0.3
       },
       "speaker": "narrator",
       "narration": "ቀናት አለፉ፤ ሳምንታትም አለፉ። ልጅቷም በየቀኑ ደግማ ሞከረች።",
@@ -131,7 +135,9 @@
       ],
       "motion": {
         "engine": "kenburns",
-        "kind": "zoom_in"
+        "kind": "zoom_in",
+        "focus": 0.0,
+        "focus_x": 0.75
       },
       "speaker": "narrator",
       "narration": "አንድ ማለዳ፣ እንጀራው ክብ እና ለስላሳ ሆኖ ወጣ።",
@@ -148,7 +154,9 @@
       ],
       "motion": {
         "engine": "kenburns",
-        "kind": "zoom_out"
+        "kind": "zoom_out",
+        "focus": 0.3,
+        "focus_x": 0.6
       },
       "speaker": "narrator",
       "narration": "ቀስ በቀስ፣ እንቁላሉ ተራመደ።",

@@ -81,3 +81,24 @@ Format: **E#: hypothesis** -> change -> result (numbers from runs.jsonl where po
 - **Consequence:** `narration_take` is a re-roll button, not a reproducibility guarantee. What makes the film reproducible is committing the chosen clip (`outputs/narration/`), not the seed. Found on the way: `assemble` took the newest file for a shot, so a re-rolled take could silently replace the chosen one; it now asks the narration stage for the exact clip the storyboard defines (`clip_for`).
 - **Cost:** 5 TTS calls on the second key (3 takes, 1 repeat, 1 earlier test on the first key).
 - **Picks (author, by ear):** s09 take 1 (the second generation of seed 1, 1.00 s) and, for s06, take 2 (6.08 s, about a second slower than the 5.04 s original). The same voice mismatch showed up on s06, a two-sentence line generated on its own; I re-rolled it twice (2 calls), and the pick is stored as `narration_take` in `storyboard.json`. Because a seed does not repeat, the committed clips in `outputs/narration/` are the record of the choice.
+
+## E11: can a crop focus keep heads in frame, in both aspect ratios?
+- **Hypothesis:** the 16:9 export loses about 44% of the square keyframe's height and always crops the centre, which cut the girl's head in s02; moving the crop window up (not regenerating anything) keeps the head in frame, with a cost in what is visible at the bottom.
+- **Change:** added optional `motion.focus` (16:9 vertical crop position, 0 = top) and `motion.focus_x` (9:16 horizontal position) to the storyboard; they join the shot's cache key only when set, so other shots stayed cached. `experiments/cropfocus.py` renders s02 at several focus values and counts hair-dark pixels in the top row of the frame, at the start and at the end of the shot (the end matters because the Ken Burns zoom crops another 10% on each side). Zero dark pixels means the head is not cut off.
+- **Result (s02, 16:9):**
+
+| focus | dark pixels in top row, start / end |
+|---|---|
+| 0.5 (old, centred) | 367 / 365 |
+| 0.4 | 233 / 232 |
+| 0.35 | 62 / 63 |
+| **0.3** | **0 / 0** |
+| 0.25 | 0 / 0 |
+| 0.1 | 1 / 2 |
+| 0.0 | 0 / 0 |
+
+  Hypothesis confirmed; 0.3 is the least shift that works. The same scan over all shots found the same fault elsewhere, so `focus: 0.3` was set for s02, s03, s05, s06, s08, and `focus: 0.0` for s07 (still 272 dark pixels at 0.3). After the change the scan reads 0 / 0 for s02, s03, s05, s06 and 0 / 2 for s07 (s08 reads 10 / 28 and the view shows both heads fully in frame; the measure also picks up the girl's hair at the shot's top, not only a cut). Before: s03 15 / 439, s05 9 / 231, s06 182 / 183, s07 167 / 39, s08 61 / 117.
+- **Cost of the fix:** the 16:9 crop now shows the faces and less of the floor. In s02 the torn injera is mostly out of frame at the end, and in s07 the finished injera is out of frame in 16:9 (the keyframe has the face at the top and the injera at the bottom, and a 16:9 window cannot hold both). The 9:16 export keeps the full height, so it shows both. I accepted showing the faces over the injera in 16:9.
+- **9:16 (the main export):** the centred crop cut the girl at the right edge in s07 and the mother in s08. `focus_x` 0.75 (s07) and 0.6 (s08) bring them in. s08 is a two-shot and a 9:16 window is only 56% of the square wide, so the girl is slightly cut at the start of the shot; 0.6 is the compromise.
+- **Mistake on the way:** my first version applied one `focus` to both axes, which shifted every 9:16 crop to the left. The cache key did not change when I fixed it, so the wrong 9:16 clips stayed cached until I deleted them by hand (FAILURES F10).
+- **Limit:** the measure only detects dark hair against a lighter wall, so it does not cover the mother (white headscarf); I checked her shots by eye on a contact sheet. No face detector was used.
